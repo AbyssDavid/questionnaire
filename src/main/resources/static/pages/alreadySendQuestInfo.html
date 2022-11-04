@@ -1,0 +1,387 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl02_Head1"><title>
+    发送问卷
+</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta id="ctl02_keywords" name="keywords" content="问卷星"/>
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.css">
+    <link rel="stylesheet" type="text/css" href="../css/default.css?v=4"/>
+    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+    <link rel="Stylesheet" type="text/css" href="../css/NewDefault.css?v=12"/>
+    <link rel="Stylesheet" type="text/css" href="../css/WjxDesign360.css?v=10"/>
+    <link rel="stylesheet" type="text/css" href="../css/selectpick.css"/>
+    <link rel="stylesheet" href="../css/send.css">
+    <script type="text/javascript" src="../plugins/kindeditor/kindeditor.js?v=197"></script>
+    <style>
+        /*.selSendTypeBox {*/
+        /*position: absolute;*/
+        /*top: 20px;*/
+        /*left: 480px;*/
+        /*display: flex;*/
+        /*align-items: center;*/
+        /*color: #333333;*/
+        /*font-size: 14px;*/
+        /*}*/
+
+        /*.selectpick-div {*/
+        /*background: #fff;*/
+        /*}*/
+        th {
+            text-align: center;
+        }
+
+        .form-group {
+            margin: 15px 0;
+            font-size: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #d7d8d9;
+        }
+
+        .fontWeight {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .ui-dialog__section {
+            padding: 0 0 20px 0;
+            border-bottom: 1px dashed #d7d8d9;
+        }
+
+        .qrcode-g {
+            padding: 20px;
+            border: 1px solid #d7d8d9;
+        }
+    </style>
+</head>
+<body class="fp-viewing">
+<div class="main-container">
+    <!--左面菜单栏-->
+    <div class="nav-bar aside size30x30" id="leftlabel">
+        <div class="ui-sidebar">
+            <!--<a href="myQuestionnaires.html" class="return-wrapper">-->
+            <a href="myQuestionnaires.html" class="return-wrapper" onclick="window.opener=null;window.close()">
+                <em class="icon return-icon"></em>
+                <div class="tips">
+                    <div class="caret-top"></div>
+                    返回我的项目
+                </div>
+            </a>
+            <a class="nav-items" href="javascript:void(0)" onclick="designQuestionnaire()">
+                <div class="items-box">
+                    <i class="icon testDesign-icon"></i>
+                </div>
+                <br/>
+                <span class="items-name">设计问卷</span>
+                <em class="caret-left"></em>
+            </a>
+            <a class="nav-items" href="javascript:void(0)">
+                <div class="items-box">
+                    <i class="icon issusPapers-icon"></i>
+                </div>
+                <br/>
+                <span class="items-name">发送问卷</span>
+                <em class="caret-left"></em>
+            </a>
+            <a class="nav-items" href="javascript:void(0)" onclick="countQuestionnaire()">
+                <div class="items-box">
+                    <i class="icon resultsData-icon"></i>
+                </div>
+                <br/>
+                <span class="items-name">分析&下载</span>
+                <em class="caret-left"></em>
+            </a>
+        </div>
+    </div>
+    <div class="inside-wrapper">
+        <div class="inside-head clearfix" style="">
+            <div class="activity-box pull-left">
+            </div>
+            <a href="javascript:void(0)" id="ctl02_hrefView" target="_blank"
+               class="btnnew btn-default btn-lg btn-nobg view-btn" style="margin-left: 40px">预览问卷</a>
+            <div class="nav-show clearfix" id="toplabel">
+                <div class="nav-box clearfix" style="display:none">
+
+                </div>
+                <!--上方分步发送跳转-->
+                <style>
+                    .bgc {
+                        background-color: #fff!important;
+                    }
+                </style>
+                <div class="nav-box clearfix" style="display:none">
+                    <a id="linkSendA" class="nav-items pull-left bgc" href="javascript:void(0)"
+                       onclick="toSendQuestionnaire('111')">
+                        <label class=" icon linkCode-icon"></label><br>
+                        <span>调查人员管理</span>
+                    </a>
+
+                    <a id="shortMessageSendA" class="nav-items bgc pull-left" href="javascript:void(0)"
+                       onclick="toSendQuestionnaire('shortMessageSend')">
+                        <label class="icon sms-icon"></label><br/>
+                        <span>问卷发布</span>
+                    </a>
+
+                    <a id="" href="javascript:void(0)"
+                       class="inside-wrapper nav-show nav-items clicked linkCode-icon">
+                        <label class=" icon linkCode-icon"></label><br>
+                        <span>已发问卷</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="inside-main">
+
+            <div class="inside-box">
+                <div class="box-items">
+
+                    <div style="clear:both"></div>
+                    <div class="step__evaluate article" style="text-align:left">
+                        <style>
+                            .SET-Guide {
+                                width: 740px !important;
+                            }
+
+                            .SET-Expansion h2 {
+                                font-size: 12px;
+                            }
+                        </style>
+
+                        <div class="box-items">
+                            <div class="recovery-guide article">
+                                <!--两种不同的发布方式-->
+                                <!--调查人员管理-->
+                                <div class="box" id="linkSend">
+                                    <div class="exam__header clearfix">
+                                        <div class="exam__set-guide pull-left current">
+                                            <a id="questPeople"></a>
+                                            <em class="caret-bottom"></em>
+                                        </div>
+                                    </div>
+                                    <div class="box__inner">
+                                        <table id="student" class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>学号</th>
+                                                <th>姓名</th>
+                                                <th>学院</th>
+                                                <th>专业</th>
+                                                <th>班级</th>
+                                                <th>性别</th>
+                                                <th>微信号</th>
+                                                <th>QQ号</th>
+                                                <th>手机号</th>
+                                                <th>邮箱地址</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                        <table id="teacher" style="display: none" class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>教师号</th>
+                                                <th>姓名</th>
+                                                <th>学院</th>
+                                                <th>性别</th>
+                                                <th>微信号</th>
+                                                <th>QQ号</th>
+                                                <th>手机号</th>
+                                                <th>邮箱地址</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
+<script src="../plugins/jquery.qrcode.min.js"></script>
+<!--<script src="../plugins/xlsx.core.min.js"></script>-->
+<script src="https://cdn.bootcss.com/xlsx/0.14.0/xlsx.core.min.js"></script>
+<script src="../plugins/layer/layer.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.js"></script>
+<script src="../plugins/bootstrap-table/js/bootstrap-table.js"></script>
+<script src="../plugins/cookie/jquery.cookie.js"></script>
+<script src="../common/common.js"></script>
+<script src="../plugins/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script src="../plugins/daterangepicker/moment.min.js"></script>
+<script src="../plugins/daterangepicker/daterangepicker.js"></script>
+<script src="answerQuestionJs/alreadySendQuestInfo.js"></script>
+
+<script type="text/javascript">
+    var descId = "ctl02_ContentPlaceHolder1_fckEmailContent";
+    var needChange = '';
+    var txtQDescription = document.getElementById(descId);
+    var initContent = "";
+    var filter = 1 ? true : false;
+    var EditToolBarItemsPageCut = ['fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold',
+        'italic', 'underline', 'strikethrough', 'subscript', 'superscript', 'plainpaste',
+        '-', 'justifyleft', 'justifycenter', 'justifyright', 'indent', 'outdent',
+        'link', 'emoticons', 'image', 'flash', 'table', 'hr'];
+    if (!filter)
+        EditToolBarItemsPageCut.push("source");
+    if (txtQDescription && !needChange) {
+        KE.show({
+            id: descId,
+            filterMode: filter,
+            urlType: "relative",
+            UploadPathType: 2,
+            afterCreate: afterCreate,
+            items: EditToolBarItemsPageCut,
+            afterChange: function (id) {
+                KE.util.setData(id);
+            }
+        });//
+    }
+
+    function afterCreate() {
+        initContent = KE.util.getData(descId);
+        //alert(initContent);
+    }
+</script>
+<script type="text/javascript">
+    var _$ = jQuery.noConflict();
+</script>
+
+<script type="text/javascript">
+    _$(".ui-sidebottom li").hover(function () {
+        _$(this).find("div.service-box").eq(0).css("display", "block");
+    }, function () {
+        _$(this).find("div.service-box").eq(0).css("display", "none");
+    })
+    var outlabel = 1;
+    var innerlabel = "链接与二维码";
+    var $topoutlabel = _$("#toplabel div.nav-box")
+    var $leftoutlabel = _$("#leftlabel a.nav-items")
+    var $leftoutul = _$("#leftlabel dd.sub-item")
+    //var $leftoutul=_$("#leftlabel dd")
+    var $leftoutli = _$("#leftlabel dd.sub-item").eq(outlabel).find("a");
+
+    _$(".selSendType option:contains('" + innerlabel + "')").attr("selected", "selected");
+
+    for (var i = 0; i < $topoutlabel.length; i++) {
+        $topoutlabel.eq(i).css("display", "none");
+    }
+    $topoutlabel.eq(outlabel).css("display", "");
+    var $topinnerlabel = $topoutlabel.eq(outlabel).find("span");
+    var $topinnera = $topoutlabel.eq(outlabel).find("a");
+    for (var i = 0; i < $leftoutli.length; i++) {
+        if ($leftoutli.eq(i).text() == innerlabel) {
+            $leftoutli.eq(i).addClass("current");
+        }
+    }
+    if (outlabel == 3) {
+        outlabel = 1;
+    }
+
+    $leftoutlabel.eq(outlabel).addClass("clicked");
+    $leftoutul.eq(outlabel).css("display", "block");
+    $overall_report = _$(".overall__report"),
+        $overall_report_pageDec = $overall_report.find(".overall__report-pageDec");
+    //    if (ISIE(8) || ISIE(7) || ISIE(6)) {
+    //        $overall_report_pageDec.children(".items:nth-child(5n + 1)").css({
+    //            "margin-left": 0
+    //        });
+    //    }
+    /*** 内部 选择问卷的select美化按钮 在1024,1366,1600分辨率下的宽度*/
+    var activity_box,
+        wind_width_obj,
+        window_width;
+    _$("body").scrollTop(10);
+    if (_$("body").scrollTop() > 0) {
+        window_width = _$(window).width() + 17;//获得屏幕分辨率
+    } else {
+        window_width = _$(window).width();
+    }
+    _$("body").scrollTop(0);
+    // //console.log(window_width)
+    //    if (ISIE(7)) {
+    activity_box = 140;
+    //    }
+    //    else {
+    if (window_width >= 1600) {
+        activity_box = 300;
+    } else if (window_width < 1600 && window_width >= 1349) {
+        activity_box = 200;
+    } else {
+        activity_box = 140;
+    }
+
+    //    }
+    wind_width_obj = {
+        container: ".activity-box",
+        width: activity_box,
+        height: 30,
+        disabled: false,
+        flags: true,
+        freeWidth: true,
+        MaxfreeWidth: 600
+    };
+
+    var hrefView = document.getElementById("ctl02_hrefView");
+    var hrefViewnew = document.getElementById("ctl02_hrefView");
+    //    _$("#ddlActivitynew").selectpick(wind_width_obj);
+    var reportId = '';
+    _$("#ddlActivitynew").change(function () {
+        var activity = _$(this).val();
+        if (activity) {
+            jq = "/jq/" + activity + ".aspx";
+            hrefView.href = jq;
+            hrefViewnew.href = jq;
+            var loc = window.location.href.toLowerCase();
+            loc = loc.replace(/activity=(\d+)/gi, "activity=" + activity + "");
+            loc = loc.replace(/activityid=(\d+)/gi, "activityid=" + activity + "");
+            loc = loc.replace(/\/(\d+)\.aspx/gi, "\/" + activity + "\.aspx");
+            loc = loc.replace(/\/(\d+),/gi, "\/" + activity + ",");
+
+            if (reportId) {
+                loc = loc.replace(/reportid=(\d+)/g, "");
+                loc = loc.replace(/,(\d+)/g, "");
+            }
+            if (loc.indexOf("viewregnew.aspx") > -1)
+                loc = "/report/" + activity + ".aspx";
+            if (loc.indexOf("setcepingreport.aspx") > -1)
+                loc = "/wjx/activitystat/setcepingreport.aspx?activity=" + activity;
+            window.location = loc;
+        }
+    })
+    var divEmailSms = document.getElementById("ctl02_divEmailSms");
+    if (divEmailSms) {
+        var lis = _$("#ctl02_divEmailSms li");
+        lis.bind("click", function () {
+            var val = _$(this).attr("value");
+            var msg = "邮件发送功能只对企业版用户提供，您是免费版用户，请升级到企业版！";
+            var loc = "/register/upgradevip.aspx?upgradeReason=27";
+            if (val == "2") {
+                msg = "短信发送功能只对企业版用户提供，您是免费版用户，请升级到企业版！";
+                loc = "/register/upgradevip.aspx?upgradeReason=28";
+            }
+            alert(msg);
+            window.location = loc;
+        })
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aim.questionnaire.dao.AnswerRecordMapper">
+
+    <resultMap id="BaseResultMap" type="com.aim.questionnaire.dao.entity.AnswerRecord">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="questionId" column="question_id" jdbcType="VARCHAR"/>
+            <result property="personId" column="person_id" jdbcType="VARCHAR"/>
+            <result property="ipAddress" column="ip_address" jdbcType="VARCHAR"/>
+            <result property="startTime" column="start_time" jdbcType="TIMESTAMP"/>
+            <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,question_id,person_id,start_time,end_time,ip_address
+    </sql>
+    <insert id="insert">
+        insert into answer_record(<include refid="Base_Column_List"/>)
+        values(#{id},#{questionId},#{personId},#{startTime},#{endTime},#{ipAddress})
+    </insert>
+    <select id="selectByQuestionIdAndPersonId" resultMap="BaseResultMap">
+        select * from answer_record where question_id=#{questionId} and person_id=#{personId}
+    </select>
+    <select id="queryListByQuestionId" resultMap="BaseResultMap">
+         select * from answer_record where question_id=#{questionId}
+    </select>
+</mapper>

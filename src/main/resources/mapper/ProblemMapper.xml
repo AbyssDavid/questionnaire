@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aim.questionnaire.dao.ProblemMapper">
+
+    <resultMap type="com.aim.questionnaire.dao.entity.Problem" id="ProblemMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="questionTitle" column="question_title" jdbcType="VARCHAR"/>
+        <result property="questionType" column="question_type" jdbcType="INTEGER"/>
+        <result property="questionOption" column="question_option" jdbcType="VARCHAR"/>
+        <result property="questionnaireId" column="questionnaire_id" jdbcType="VARCHAR"/>
+        <result property="required" column="required" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ProblemMap">
+        select
+          id, question_title, question_type, question_option, questionnaire_id, required
+        from problem
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ProblemMap">
+        select
+          id, question_title, question_type, question_option, questionnaire_id, required
+        from problem
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="questionTitle != null and questionTitle != ''">
+                and question_title = #{questionTitle}
+            </if>
+            <if test="questionType != null">
+                and question_type = #{questionType}
+            </if>
+            <if test="questionOption != null and questionOption != ''">
+                and question_option = #{questionOption}
+            </if>
+            <if test="questionnaireId != null and questionnaireId != ''">
+                and questionnaire_id = #{questionnaireId}
+            </if>
+            <if test="required != null and required != ''">
+                and required = #{required}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from problem
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="questionTitle != null and questionTitle != ''">
+                and question_title = #{questionTitle}
+            </if>
+            <if test="questionType != null">
+                and question_type = #{questionType}
+            </if>
+            <if test="questionOption != null and questionOption != ''">
+                and question_option = #{questionOption}
+            </if>
+            <if test="questionnaireId != null and questionnaireId != ''">
+                and questionnaire_id = #{questionnaireId}
+            </if>
+            <if test="required != null and required != ''">
+                and required = #{required}
+            </if>
+        </where>
+    </select>
+    <select id="queryListByQuestionId" resultMap="ProblemMap">
+        select
+          id, question_title, question_type, question_option, questionnaire_id, required
+        from problem
+        where questionnaire_id=#{id}
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into problem(id,question_title, question_type, question_option, questionnaire_id, required)
+        values (#{id},#{questionTitle}, #{questionType}, #{questionOption}, #{questionnaireId}, #{required})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into problem(question_title, question_type, question_option, questionnaire_id, required)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.questionTitle}, #{entity.questionType}, #{entity.questionOption}, #{entity.questionnaireId}, #{entity.required})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into problem(question_title, question_type, question_option, questionnaire_id, required)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.questionTitle}, #{entity.questionType}, #{entity.questionOption}, #{entity.questionnaireId}, #{entity.required})
+        </foreach>
+        on duplicate key update
+        question_title = values(question_title),
+        question_type = values(question_type),
+        question_option = values(question_option),
+        questionnaire_id = values(questionnaire_id),
+        required = values(required)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update problem
+        <set>
+            <if test="questionTitle != null and questionTitle != ''">
+                question_title = #{questionTitle},
+            </if>
+            <if test="questionType != null">
+                question_type = #{questionType},
+            </if>
+            <if test="questionOption != null and questionOption != ''">
+                question_option = #{questionOption},
+            </if>
+            <if test="questionnaireId != null and questionnaireId != ''">
+                questionnaire_id = #{questionnaireId},
+            </if>
+            <if test="required != null and required != ''">
+                required = #{required},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from problem where id = #{id}
+    </delete>
+    <delete id="deleteByQuestionnaireId">
+        delete from problem where questionnaire_id = #{questionnaireId}
+    </delete>
+
+</mapper>
+

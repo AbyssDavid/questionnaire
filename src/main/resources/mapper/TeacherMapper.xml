@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aim.questionnaire.dao.TeacherMapper">
+
+    <resultMap type="com.aim.questionnaire.dao.entity.Teacher" id="TeacherMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="college" column="college" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="wxId" column="wx_id" jdbcType="VARCHAR"/>
+        <result property="qq" column="qq" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TeacherMap">
+        select
+          id, name, college, gender, wx_id, qq, phone, email
+        from teacher
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TeacherMap">
+        select
+          id, name, college, gender, wx_id, qq, phone, email
+        from teacher
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="college != null and college != ''">
+                and college = #{college}
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender = #{gender}
+            </if>
+            <if test="wxId != null and wxId != ''">
+                and wx_id = #{wxId}
+            </if>
+            <if test="qq != null and qq != ''">
+                and qq = #{qq}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from teacher
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="college != null and college != ''">
+                and college = #{college}
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender = #{gender}
+            </if>
+            <if test="wxId != null and wxId != ''">
+                and wx_id = #{wxId}
+            </if>
+            <if test="qq != null and qq != ''">
+                and qq = #{qq}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+        </where>
+    </select>
+    <select id="queryListById" resultMap="TeacherMap">
+        select
+        id, name, college, gender, wx_id, qq, phone, email
+        from teacher
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" >
+        insert into teacher(id,name, college, gender, wx_id, qq, phone, email)
+        values (#{id},#{name}, #{college}, #{gender}, #{wxId}, #{qq}, #{phone}, #{email})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into teacher(id,name, college, gender, wx_id, qq, phone, email)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.name}, #{entity.college}, #{entity.gender}, #{entity.wxId}, #{entity.qq}, #{entity.phone}, #{entity.email})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into teacher(id,name, college, gender, wx_id, qq, phone, email)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id},#{entity.name}, #{entity.college}, #{entity.gender}, #{entity.wxId}, #{entity.qq}, #{entity.phone}, #{entity.email})
+        </foreach>
+        on duplicate key update
+        name = values(name),
+        college = values(college),
+        gender = values(gender),
+        wx_id = values(wx_id),
+        qq = values(qq),
+        phone = values(phone),
+        email = values(email)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update teacher
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="college != null and college != ''">
+                college = #{college},
+            </if>
+            <if test="gender != null and gender != ''">
+                gender = #{gender},
+            </if>
+            <if test="wxId != null and wxId != ''">
+                wx_id = #{wxId},
+            </if>
+            <if test="qq != null and qq != ''">
+                qq = #{qq},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from teacher where id = #{id}
+    </delete>
+
+</mapper>
+
