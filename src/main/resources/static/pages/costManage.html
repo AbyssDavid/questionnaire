@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>租户计费管理</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
@@ -21,7 +21,7 @@
     <script src="../plugins/layer/layer.js"></script>
     <script src="../plugins/cookie/jquery.cookie.js"></script>
     <script src="../common/common.js"></script>
-    <script src="answerQuestionJs/userManage.js"></script>
+    <script src="answerQuestionJs/CostManage.js"></script>
     <style>
         .create-btn {
             font-size: 16px;
@@ -179,7 +179,10 @@
     </style>
 </head>
 <body>
-<div class="header"></div>
+
+<div class="header">
+</div>
+
 <div class="content-wrapper"
      style="border-top: 1px solid rgb(228, 228, 228); min-height: 266px;position:relative;margin:0 auto -50px;padding:0;width:100%;min-height:100%;height:auto!important;background:#fff;padding-bottom:50px">
     <section class="content">
@@ -191,7 +194,10 @@
                     <div id="ctl01_ContentPlaceHolder1_searchPapaer" class="survey-create clearfix">
 
                         <div class="create-add pull-left">
-
+                            <a href="javascript:void(0)" title="创建新租户" id="createUser" target="_self"
+                               class="btn btn-default btn-lg pull-left create-btn"
+                               onclick="location.href='CreateNewTenant.html'">
+                                <i class="icon create-icon"></i>创建租户</a>
                             <div id="ctl01_ContentPlaceHolder1_divInfo" class="create-search pull-left"
                                  style="margin-right:10px;">
                                 <input name="ctl01$ContentPlaceHolder1$txtName" type="text" placeholder="请输入租户名进行搜索..."
@@ -204,9 +210,9 @@
                         </div>
 
                     </div>
-                    <!--<div id="ctl01_ContentPlaceHolder1_surveyfolder" class="survey__folder"></div>-->
+
                     <table id="userTable"
-                           style="text-align:  center;font-size: 14px;margin: auto;word-wrap:break-word; word-break:break-all"></table>
+                           style="text-align:  center;font-size: 14px;margin: auto;word-wrap:break-word; word-break:break-all "></table>
                     <table class="questionnaire_tableAll"></table>
                 </div>
             </div>
