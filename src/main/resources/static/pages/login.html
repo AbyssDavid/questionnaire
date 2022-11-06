@@ -4,19 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=3" type="text/css">
+    <link rel="stylesheet" href="answerQuestionCss/login.css">
     <title>login</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
 
-        body {
-            background-color: rgb(234, 232, 233);
-            background: url(../images/bg.jpg);
-            background-size: 110%, 110%;
-        }
-    </style>
     <script>
         function check2pwd() {
             if (pwd1.value != pwd2.value) {
@@ -35,8 +26,21 @@
         }
 
         function goin() {
-            alert('登录成功！');
-            location.href = 'userManage.html';
+            var url = '/login';
+            var data = {
+                "username": document.getElementById("username").value,
+                "password":document.getElementById("password").value,
+            };
+            commonAjaxPost(true, url, data, function (result){
+                if (result.code == "666") {
+                    layer.msg("登录成功", {icon: 1});
+                    setTimeout(function () {
+                        window.location.href = 'userManage.html';
+                    }, 500)
+                }else{
+                    layer.msg("登录失败，用户名或密码不正确", {icon: 1});
+                }
+            });
         }
     </script>
     <link rel="stylesheet" href="../pages/answerQuestionCss/login.css">
@@ -48,8 +52,8 @@
     <div class="login">
         <p class="login-value">LOG IN</p>
         <form action="">
-            <input type="text" class="login-num" placeholder="请输入账号">
-            <input type="password" class="login-pwd" placeholder="请输入密码">
+            <input id="username" type="text" class="login-num" placeholder="请输入账号">
+            <input id="password" type="password" class="login-pwd" placeholder="请输入密码">
             <input type="button" value="忘记密码？" class="forget" onclick="forgetpwd()">
             <input type="button" value="登录" class="login-button" onclick="goin()">
         </form>
@@ -78,4 +82,10 @@
     </div>
 </div>
 </body>
+<script src="../plugins/jquery.qrcode.min.js"></script>
+<script src="../js/zhezhao.js?v=3"type="text/javascript"></script>
+<script src="../plugins/layer/layer.js"></script>
+<script src="../plugins/cookie/jquery.cookie.js"></script>
+<script src="../common/common.js"></script>
+<script src="answerQuestionJs/login.js"></script>
 </html>
