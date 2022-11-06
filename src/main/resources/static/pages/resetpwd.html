@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset password</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(234, 232, 233);
+            background: url(../images/bg.jpg);
+            background-size: 110%, 110%;
+        }
+
+        .forget-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: rgb(255, 108, 108);
+            padding-left: 60px;
+        }
+
+        .formblock {
+            width: 400px;
+            height: 320px;
+            background-color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* 相对于现在所处位置的位移变化，x便偏移自己宽度的50%，y偏移自己高度的50% */
+        }
+
+        .formblock input {
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <form method="post" action=''>
+        <div class="formblock">
+            <h2 class="forget-value">Reset password</h2>
+            <label>输入新密码:<span style="color: red;" id="passwdText"></span><br>
+                <input type="password" name="passwd1" oninput="testPw()" minlength="8"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                       title="At least 8 characters and contains numeric uppercase and lowercase letters" required
+                       style="height: 22px;width: 250px"></label><br>
+            <label>确认新密码:<span style="color: red;" id="confirmText"></span><br>
+                <input type="password" name="passwd2" oninput="confirmPw()" minlength="8"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                       title="At least 8 characters and contains numeric uppercase and lowercase letters" required
+                       style="height: 22px;width:250px"></label><br>
+            <input type="submit" value="确认" style="width: 80px;height: 30px" onclick="location.href='login.html'">
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        var in_password1 = document.querySelector("input[name=passwd1]");
+        var span_testpw = document.querySelector("span#passwdText");
+        var in_password2 = document.querySelector("input[name=passwd2]");
+        var span_confirm = document.querySelector("span#confirmText");
+        var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+        function testPw() {
+            if (in_password1.value == "") {
+                span_testpw.innerHTML = "not null";
+                return;
+            }
+            if (pattern.exec(in_password1.value)) {
+                span_testpw.innerHTML = "";
+            } else {
+                span_testpw.innerHTML = "至少8个字符，包含数字大小写字母";
+            }
+        }
+
+        function confirmPw() {
+            if (in_password1.value === in_password2.value) {
+                span_confirm.innerHTML = "";
+                in_password2.setCustomValidity('');
+            } else {
+                span_confirm.innerHTML = "两次密码不一致";
+                in_password2.setCustomValidity("两次密码不一致");
+            }
+        }
+    </script>

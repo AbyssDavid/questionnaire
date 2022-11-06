@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HistorySQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(234, 232, 233);
+            background: url(../images/bg.jpg);
+            background-size: 110%, 110%;
+        }
+
+        form {
+            width: 300px;
+            height: 165px;
+            background-color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* 相对于现在所处位置的位移变化，x便偏移自己宽度的50%，y偏移自己高度的50% */
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <!--        <h2 class="forget-value">Forget password</h2>-->
+    <p class="security" style="width: 400px;padding-top: 24px;font-size: 18px">您的密保问题是：“爸爸的生日”</p>
+    <button class="btn-return" style="width: 90px;margin-left: 150px;margin-top: 60px;font-size: 16px" onclick="back()">
+        返回
+    </button>
+</form>
+</body>
+<script>
+    function back() {
+        window.close();
+    }
+</script>
+</html>

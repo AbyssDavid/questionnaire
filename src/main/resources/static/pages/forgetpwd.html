@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget password</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(234, 232, 233);
+            background: url(../images/bg.jpg);
+            background-size: 110%, 110%;
+        }
+
+        form {
+            width: 400px;
+            height: 320px;
+            background-color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* 相对于现在所处位置的位移变化，x便偏移自己宽度的50%，y偏移自己高度的50% */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form input {
+            width: 100%;
+            height: 40px;
+            display: block;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+        .input-code {
+            display: inline;
+            width: 50%;
+            height: 40px;
+        }
+
+        button {
+            width: 50%;
+            height: 40px;
+            background-color: rgb(235, 235, 235);
+            border: none;
+        }
+
+        .forget-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: rgb(255, 108, 108);
+        }
+
+        .mya {
+            float: right;
+        }
+
+        .yyy {
+            float: right;
+            padding-bottom: 20px;
+            width: 100px;
+            height: 30px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<form action="">
+    <h2 class="forget-value">Forget password</h2>
+    <input id="username" type="text" placeholder="请输入绑定手机号" style="size: 100px;padding-top: 10px;padding-right: 20px">
+    <button class="login-btn" type="button" onclick="checktele()">获取验证码</button>
+    <input class="input-code" type="text" placeholder="请输入验证码">
+    <button type="button" onclick="resetpwd()">重置密码</button>
+    <span class="mya">
+        <a href="" onclick="window.open('SecurityQuestion.html');">点击查看密保问题
+        </a>
+    </span>
+    <div class="yyy">
+        <button type="button" onclick="location.href='login.html'" style="width:100px;height:30px;padding-top: 2px">返回
+        </button>
+    </div>
+</form>
+</body>
+<script>
+    // let 定义一个变量
+    function checktele() {
+        let value = username.value
+        var CellPoe = /^[1][3,4,5,7,8][0-9]{9}$/;
+        if (!CellPoe.test(value)) {
+            alert("请输入正确的11位手机号")
+        } else {
+            alert("将向手机号#18004137833发送验证码");
+        }
+    }
+
+    function resetpwd() {
+        location.href = 'resetpwd.html';
+    }
+
+</script>
+</html>

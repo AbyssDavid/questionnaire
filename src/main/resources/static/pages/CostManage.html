@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户管理</title>
-
+    <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
@@ -15,7 +14,6 @@
 
     <link rel="stylesheet" href="../css/wjxmaster.css">
     <link rel="stylesheet" href="../css/myquestionnaires.css">
-
     <script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/bootstrap-table/js/bootstrap-table.js"></script>
@@ -107,8 +105,7 @@
             margin: 27px;
         }
 
-        /*以下是表格样式*/
-        .bootstrap-table{
+        .bootstrap-table {
             margin: 0 50px;
         }
 
@@ -160,7 +157,7 @@
             font-size: 14px;
         }
 
-        .page-list{
+        .page-list {
             font-size: 14px;
         }
 
@@ -170,7 +167,7 @@
             vertical-align: middle;
         }
 
-        .btn-group .btn-default{
+        .btn-group .btn-default {
             color: #333;
             background-color: #fff;
             border-color: #ccc;
@@ -179,22 +176,12 @@
         .search-icon:hover {
             background: url(../images/search1.png) no-repeat center;
         }
-
-
     </style>
-
-
-
 </head>
 <body>
-
-<div class="header">
-
-</div>
-
-
-
-<div class="content-wrapper" style="border-top: 1px solid rgb(228, 228, 228); min-height: 266px;position:relative;margin:0 auto -50px;padding:0;width:100%;min-height:100%;height:auto!important;background:#fff;padding-bottom:50px">
+<div class="header"></div>
+<div class="content-wrapper"
+     style="border-top: 1px solid rgb(228, 228, 228); min-height: 266px;position:relative;margin:0 auto -50px;padding:0;width:100%;min-height:100%;height:auto!important;background:#fff;padding-bottom:50px">
     <section class="content">
         <div id="ajax-content">
             <div class="projectManage">
@@ -205,30 +192,21 @@
 
                         <div class="create-add pull-left">
 
-                            <a href="javascript:void(0)" title="创建新用户" id="createUser" target="_self"
-                               class="btn btn-default btn-lg pull-left create-btn" onclick="openCreateUserPage('','创建')">
-                                <i class="icon create-icon"></i>创建用户</a>
-                            <a href="javascript:void(0)" title="创建新用户"
-                               class="btn btn-default btn-lg pull-left create-btn" onclick="">
-                                批量导入
-                            </a>
-                            <a href="javascript:void(0)" title="创建新用户"
-                               class="btn btn-default btn-lg pull-left create-btn" onclick="">
-                                导出Excel
-                            </a>
                             <div id="ctl01_ContentPlaceHolder1_divInfo" class="create-search pull-left"
                                  style="margin-right:10px;">
-                                <input name="ctl01$ContentPlaceHolder1$txtName" type="text" placeholder="请输入用户名进行搜索..."
+                                <input name="ctl01$ContentPlaceHolder1$txtName" type="text" placeholder="请输入租户名进行搜索..."
                                        id="keyWord" class="serarchbox"
-                                       onfocus="if(placeholder=='请输入用户名进行搜索...'){placeholder='';}"
-                                       onblur="if(placeholder==''){placeholder='请输入用户名进行搜索...';}">
-                                <div class="icon search-icon buttonboder" id="userManager" onclick="getUserList()"></div>
+                                       onfocus="if(placeholder=='请输入租户名进行搜索...'){placeholder='';}"
+                                       onblur="if(placeholder==''){placeholder='请输入租户名进行搜索...';}">
+                                <div class="icon search-icon buttonboder" id="userManager"
+                                     onclick="getUserList()"></div>
                             </div>
                         </div>
 
                     </div>
                     <!--<div id="ctl01_ContentPlaceHolder1_surveyfolder" class="survey__folder"></div>-->
-                    <table id="userTable" style="text-align:  center;font-size: 14px;margin: auto;word-wrap:break-word; word-break:break-all" ></table>
+                    <table id="userTable"
+                           style="text-align:  center;font-size: 14px;margin: auto;word-wrap:break-word; word-break:break-all"></table>
                     <table class="questionnaire_tableAll"></table>
                 </div>
             </div>
@@ -236,18 +214,10 @@
     </section>
 </div>
 
-
-<div id="ctl01_footlink" class="my-footer MP-footer">
-
-    <div id="ctl01_divWjxFooter">
-        <i class="log-dec">@Efficient questionnaire, convenient life</i>
-    </div>
+<div id="ctl01_divWjxFooter">
+    <i class="log-dec">@Efficient questionnaire, convenient life</i>
+</div>
 </div>
 
-
 </body>
-
-<script>
-</script>
-
 </html>
