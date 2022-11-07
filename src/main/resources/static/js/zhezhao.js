@@ -4,6 +4,8 @@
 function $get(a) {
     return document.getElementById(a);
 }
+
+
 function getElementTop(b) {
     if (!b) {
         return;
