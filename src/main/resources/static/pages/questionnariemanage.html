@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>问卷界面
   </title>
-  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-  <meta name="renderer" content="webkit"/>
-  <meta id="ctl01_keywords" name="keywords"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+
   <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../plugins/bootstrap-select/bootstrap-select.min.css">
   <link rel="stylesheet" href="../css/default.css">
@@ -17,11 +15,22 @@
 
   <link rel="stylesheet" href="../css/wjxmaster.css">
   <link rel="stylesheet" href="../css/myquestionnaires.css">
+
   <link href="../css/wjxUI.css" rel="stylesheet"/>
   <link id="ctl01_quetsioncss" rel="stylesheet" type="text/css" href="../pages/answerQuestionCss/myquestionnaires.css"/>
   <link id="ctl01_cssmaster" rel="stylesheet" type="text/css" href="answerQuestionCss/wjx.css"/>
+
+  <script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
+  <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../plugins/bootstrap-table/js/bootstrap-table.js"></script>
+  <script src="../plugins/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+  <script src="../plugins/layer/layer.js"></script>
+  <script src="../plugins/cookie/jquery.cookie.js"></script>
+
   <script src="../js/antidomxss_v640.js"></script>
   <script src="../js/interfaceacting211222.js"></script>
+  <script src="../common/common.js"></script>
+  <!--  <script src="answerQuestionJs/questionnairemanage.js"></script>-->
 </head>
 <body>
 
@@ -30,31 +39,46 @@
 <!--[if lt IE 9]>
 <script type="text/javascript" src="/js/respond.min.js"></script>
 <![endif]-->
-<div id="BS">
-  <div class="BS-T masterHeader">
-    <div class="my-container clearfix" style="">
 
-      <div class="user-wrapper fr" id="userbutton">
-        <div id="ctl01_divSetButton" class="fl">
-          <dl class="my-question fl user-info headsplitline">
-            <dt class="box user-info">
-              <i class="gohome index_iconfont vam">&#xe65c;</i>
-              <span class="vam" style="font-size:14px;">我的问卷</span>
-            </dt>
-          </dl>
+<div class="BS-T masterHeader" style="background-color: #0095ef">
+  <div class="my-container clearfix">
 
-        </div>
-        <dl class="user-info useInfoWrap fl" style="">
-          <dt class="user-icon">
-            <img style="width:28px;height:28px;display:block;border-radius: 33px;margin-bottom: 10px"
-                 src="../images/bg.jpg" alt=""/>
+    <div class="user-wrapper fr" id="userbutton">
+      <div id="ctl01_divSetButton" class="fl">
+        <dl class="my-question fl user-info headsplitline">
+          <dt class="box user-info">
+            <i class="gohome index_iconfont vam" style="background-color: #eeeeee;background-size: 120%">&#xe65c;</i>
+            <span class="vam" style="font-size:16px;font-color:#ffff">我的问卷</span>
           </dt>
-          <dd class="spinner-list">
-            <a href="javascript:void(0)" class="user-name" style="padding-bottom: 10px;margin-bottom: 10px;height:5px">
-              <span id="ctl01_lblUserName" style="font-size: 16px;margin-top: 20px">18004137833</span>
-              <i class="index_iconfont fs14">&#xe656;</i>
-            </a>
-          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <dl class="user-info useInfoWrap fl" style="">
+      <dt class="user-icon">
+        <img style="width:28px;height:28px;display:block;border-radius: 33px;margin-bottom: 10px" src="../images/bg.jpg"
+             alt=""/>
+      </dt>
+      <dd class="spinner-list">
+        <a href="javascript:void(0)" class="user-name" style="padding-bottom: 10px;margin-bottom: 10px;height:5px">
+          <span id="ctl01_lblUserName" style="font-size: 16px;padding-top: 40px">18004137833</span>
+          <i class="index_iconfont fs14">&#xe656;</i>
+        </a>
+        <ul style="width:140px;right:0;left:auto;margin-top:-2px;">
+          <li>
+            <i class="index_iconfont">&#xe63e;</i>
+            用户信息
+          </li>
+          <li id="ctl01_liClient">
+            <i class="index_iconfont">&#xe65f;</i>
+            客服中心
+          </li>
+          <li id="ctl01_hrefWjxout" style="border-top:1px solid #D9D9D9;line-height:37px">
+            <i class="index_iconfont">&#xe63c;</i>
+            退出
+          </li>
+        </ul>
+      </dd>
         </dl>
       </div>
     </div>
@@ -70,7 +94,6 @@
       <div>
         <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="011AC131"/>
       </div>
-      <div id="fixheight" style="height:30px;"></div>
       <div id="ctl01_ContentPlaceHolder1_divNotify" class="nav-header redbcg">
       </div>
       <div class="main-wrapper">
@@ -123,12 +146,14 @@
             </div>
             <div class="listcont_r" style="">
               <div id="ctl01_ContentPlaceHolder1_divhasques" class="survey-cont">
-                <div id="ctl01_ContentPlaceHolder1_searchPapaer" class="surveyCont_search clearfix">
+                <div id="ctl01_ContentPlaceHolder1_searchPapaer" class="surveyCont_search clearfix"
+                     style="height: 50px">
                   <div class="create-add">
-                    <h2 class="mySurvey fl" style="width: 100px;height: 30px;font-size: 20px">问卷列表</h2>
+                    <h2 class="mySurvey fl"
+                        style="width: 100px;height: 30px;font-size: 20px;font-weight: 700;padding-top: 0px">问卷列表</h2>
                     <div id="ctl01_ContentPlaceHolder1_divInfo" class="create-search fr" style="margin-left: 50px">
                       <input name="ctl01$ContentPlaceHolder1$txtName" type="text" id="ctl01_ContentPlaceHolder1_txtName"
-                             class="serarchbox" style="width: 180px;height:30px" } value="请输入问卷名进行搜索..."
+                             class="serarchbox" style="width: 180px;height:20px" } value="请输入问卷名进行搜索..."
                              onkeypress="return searchQ(event);"/>
                       <input type="submit" name="ctl01$ContentPlaceHolder1$btnSub" value=""
                              id="ctl01_ContentPlaceHolder1_btnSub" style="display: none"/>
@@ -139,50 +164,33 @@
                       <div id="ctl01_ContentPlaceHolder1_divStatus">
                         <input name="ctl01$ContentPlaceHolder1$hidStatus" type="hidden"
                                id="ctl01_ContentPlaceHolder1_hidStatus" value="-1"/>
-                        <script>
+                        <!--                        <script>-->
 
-                          var $hidStatus = document.getElementById("ctl01_ContentPlaceHolder1_hidStatus");
-                          var $status_cur_span = $(".status-cur");
+                        <!--                          var $hidStatus = document.getElementById("ctl01_ContentPlaceHolder1_hidStatus");-->
+                        <!--                          var $status_cur_span = $(".status-cur");-->
 
-                          if ($hidStatus.value == -1) {
-                            $status_cur_span.text("状态");
-                          } else if ($hidStatus.value == 1) {
-                            $status_cur_span.text("已发布");
-                          } else if ($hidStatus.value == 3) {
-                            $status_cur_span.text("未发布");
-                          }
+                        <!--                          if ($hidStatus.value == -1) {-->
+                        <!--                            $status_cur_span.text("状态");-->
+                        <!--                          } else if ($hidStatus.value == 1) {-->
+                        <!--                            $status_cur_span.text("已发布");-->
+                        <!--                          } else if ($hidStatus.value == 3) {-->
+                        <!--                            $status_cur_span.text("未发布");-->
+                        <!--                          }-->
 
-                          $(".status-box li").on("click", function () {
-                            var value = $(this).data("value");
-                            $hidStatus.value = value;
-                            if (btnSub)
-                              btnSub.click();
-                            return false;
-                          })
-                        </script>
+                        <!--                          $(".status-box li").on("click", function() {-->
+                        <!--                            var value = $(this).data("value");-->
+                        <!--                            $hidStatus.value = value;-->
+                        <!--                            if (btnSub)-->
+                        <!--                              btnSub.click();-->
+                        <!--                            return false;-->
+                        <!--                          })-->
+                        <!--                        </script>-->
                       </div>
                     </div>
                     <div class="sort-status spinner-list fs14 fr" style="padding: 10px 0; margin-right: 16px;">
-                      <div>
-                        <span class="sort-status-cur vam">默认排序</span>
-                        <i class="index_iconfont mr0 vam" style="color: #888">&#xe65a;</i>
-                      </div>
                       <div id="ctl01_ContentPlaceHolder1_defaultSort">
                         <input name="ctl01$ContentPlaceHolder1$sortStyle" type="hidden"
                                id="ctl01_ContentPlaceHolder1_sortStyle" value="t1"/>
-                        <script>
-                          var sortStyle = document.getElementById("ctl01_ContentPlaceHolder1_sortStyle");
-                          var sortStyleSpan = $(".sort-status-cur");
-
-                          $(".sort-status li").click(function () {
-                            var value = $(this).data("value");
-                            sortStyle.value = value;
-                            var btnSub = document.getElementById("ctl01_ContentPlaceHolder1_btnSub");
-                            if (btnSub)
-                              btnSub.click();
-                            return false;
-                          })
-                        </script>
                       </div>
                     </div>
                   </div>
@@ -214,6 +222,27 @@
                               <i class='comIcon design-icon'>&#xe796;</i>
                               设计问卷<i class='index_iconfont'>&#xe656;</i>
                             </a>
+                            <ul>
+                              <span class='caret-inverted'></span>
+                              <li>
+                                <a title='设计向导'>设计向导</a>
+                              </li>
+                              <li>
+                                <a title='编辑问卷'>编辑问卷</a>
+                              </li>
+                              <li>
+                                <a title='问卷设置'>问卷设置</a>
+                              </li>
+                              <li>
+                                <a title='问卷外观'>问卷外观</a>
+                              </li>
+                              <li>
+                                <a title='流程审批'>流程审批</a>
+                              </li>
+                              <li>
+                                <a>红包&奖品</a>
+                              </li>
+                            </ul>
                           </dd>
                         </dl>
                         <dl class='process-2 pull-left'>
@@ -222,6 +251,26 @@
                               <i class='comIcon recovery-icon'>&#xe797;</i>
                               发送问卷<i class='index_iconfont'>&#xe656;</i>
                             </a>
+                            <ul>
+                              <span class='caret-inverted'></span>
+                              <li>
+                                <a title='通过QQ、MSN、Email发送给受访者'>链接&二维码</a>
+                              </li>
+                              <li>
+                                <a title='微信发送'>微信发送</a>
+                              </li>
+                              <li>
+                                <a class='sampleservice'
+                                   onmouseenter='layer.tips("帮您以最低成本快速收集采集到需要的数据，每月可触达3亿用户",this);'
+                                   onmouseout='layer.closeAll(this);'>样本服务</a>
+                              </li>
+                              <li>
+                                <a title='填写其他用户的问卷，并邀请他们回填'>互填问卷</a>
+                              </li>
+                              <li>
+                                <a title='通过设置积分奖励来回收1000份以内的答卷'>申请推荐</a>
+                              </li>
+                            </ul>
                           </dd>
                         </dl>
                         <dl class='process-3 pull-left'>
@@ -230,6 +279,18 @@
                               <i class='comIcon download-icon'>&#xe798;</i>
                               分析&下载<i class='index_iconfont'>&#xe656;</i>
                             </a>
+                            <ul>
+                              <span class='caret-inverted'></span>
+                              <li>
+                                <a title='查看包含统计分析数据的报告，并可以下载到WORD、PDF '>统计&分析</a>
+                              </li>
+                              <li>
+                                <a title='以Excel、CSV格式下载答卷数据（可以导入到SPSS分析'>查看下载答卷</a>
+                              </li>
+                              <li>
+                                <a title='包括来源渠道分析，时间段分析以及地理位置分析'>来源分析</a>
+                              </li>
+                            </ul>
                           </dd>
                         </dl>
                       </div>
@@ -253,8 +314,7 @@
                           <i class='index_iconfont fs18'>&#xe670;</i>
                           <span class='vam'>文件夹</span>
                         </a>
-                        <a class='fl control-items' href='javascript:void(0)'
-                           onclick='PDF_launch("/wjx/notify/notify.aspx?activityid=178287214",380,318,null,"新增答卷时提醒"); '>
+                        <a class='fl control-items' href='javascript:void(0);"新增答卷时提醒"; '>
                           <i class='index_iconfont fs18'>&#xe66e;</i>
                           <span class='vam'>提醒</span>
                         </a>
@@ -262,42 +322,175 @@
                     </dd>
                   </dl>
                 </div>
-                <div id="ctl01_ContentPlaceHolder1_lmlpage" class="wjxui-page clearfix" style="padding-bottom: 110px;">
-                  <div id="ctl01_ContentPlaceHolder1_pagehttml" class="page-list pager-linkpage changePage fr"></div>
-                </div>
-                <div id="vipEmpty" class="bt tac" style="display: none">
-                  <div id="vipCont">
-                    <span class="vipIconWrap"></span>
-                    <p class="vipText"></p>
+                <div class="sort-status spinner-list fs14 fr" style="padding: 10px 0; margin-right: 16px;">
+                  <div id="ctl02_ContentPlaceHolder1_defaultSort">
+                    <input name="ctl01$ContentPlaceHolder1$sortStyle" type="hidden"
+                           id="ctl02_ContentPlaceHolder1_sortStyle" value="t1"/>
                   </div>
-                  <a class="wjxui-btn emptyBtn" target="_blank">升级至企业版</a>
                 </div>
               </div>
+            </div>
+            <div id="ctl02_ContentPlaceHolder1_qls" class="survey-list" style="padding-top: 35px">
+              <dl class='survey-items' style='z-index:100;position:relative'>
+                <dt class='item-top'>
+                  <div class='pull-left'>
+                    <a target='_blank' class='pull-left item-tit' title='&quot手机移动支付业务调查问卷&quot'>&quot;手机移动支付业务调查问卷&quot;</a>
+                  </div>
+                  <div class='pull-right'>
+                    <div class='pull-left item-id'>ID:178287214</div>
+                    <div class='pull-left item-runing'>
+                      <i class='haspublic'></i>
+                      已结束
+                    </div>
+                    <div class='pull-left item-sheet'>
+                      答卷:<a class='runing-num-has'>38</a>
+                    </div>
+                    <div class='pull-left item-data'>10月18日 19:17</div>
+                  </div>
+                </dt>
+                <dd class='item-bot'>
+                  <div class='process-box pull-left'>
+                    <dl class='process-1 pull-left'>
+                      <dd class='spinner-list'>
+                        <a>
+                          <i class='comIcon design-icon'>&#xe796;</i>
+                          设计问卷<i class='index_iconfont'>&#xe656;</i>
+                        </a>
+                        <ul>
+                          <span class='caret-inverted'></span>
+                          <li>
+                            <a title='设计向导'>设计向导</a>
+                          </li>
+                          <li>
+                            <a title='编辑问卷'>编辑问卷</a>
+                          </li>
+                          <li>
+                            <a title='问卷设置'>问卷设置</a>
+                          </li>
+                          <li>
+                            <a title='问卷外观'>问卷外观</a>
+                          </li>
+                          <li>
+                            <a title='流程审批'>流程审批</a>
+                          </li>
+                          <li>
+                            <a>红包&奖品</a>
+                          </li>
+                        </ul>
+                      </dd>
+                    </dl>
+                    <dl class='process-2 pull-left'>
+                      <dd class='spinner-list'>
+                        <a>
+                          <i class='comIcon recovery-icon'>&#xe797;</i>
+                          发送问卷<i class='index_iconfont'>&#xe656;</i>
+                        </a>
+                        <ul>
+                          <span class='caret-inverted'></span>
+                          <li>
+                            <a title='通过QQ、MSN、Email发送给受访者'>链接&二维码</a>
+                          </li>
+                          <li>
+                            <a title='微信发送'>微信发送</a>
+                          </li>
+                          <li>
+                            <a class='sampleservice' onmouseenter='layer.tips("帮您以最低成本快速收集采集到需要的数据，每月可触达3亿用户",this);'
+                               onmouseout='layer.closeAll(this);'>样本服务</a>
+                          </li>
+                          <li>
+                            <a title='填写其他用户的问卷，并邀请他们回填'>互填问卷</a>
+                          </li>
+                          <li>
+                            <a title='通过设置积分奖励来回收1000份以内的答卷'>申请推荐</a>
+                          </li>
+                        </ul>
+                      </dd>
+                    </dl>
+                    <dl class='process-3 pull-left'>
+                      <dd class='spinner-list'>
+                        <a title='答卷统计分析'>
+                          <i class='comIcon download-icon'>&#xe798;</i>
+                          分析&下载<i class='index_iconfont'>&#xe656;</i>
+                        </a>
+                        <ul>
+                          <span class='caret-inverted'></span>
+                          <li>
+                            <a title='查看包含统计分析数据的报告，并可以下载到WORD、PDF '>统计&分析</a>
+                          </li>
+                          <li>
+                            <a title='以Excel、CSV格式下载答卷数据（可以导入到SPSS分析'>查看下载答卷</a>
+                          </li>
+                          <li>
+                            <a title='包括来源渠道分析，时间段分析以及地理位置分析'>来源分析</a>
+                          </li>
+                        </ul>
+                      </dd>
+                    </dl>
+                  </div>
+                  <div class='operation-box pull-right'>
+                    <a href='javascript:void(0);' class='pull-left stop-items' title='此问卷正在运行，点击停止答卷回收'
+                       onclick='return statusChange(178287214,"状态设为“停止”后将不能填写，是否继续？",2);'>
+                      <i class='index_iconfont '>&#xe653;</i>
+                      <span class='vam'>停止</span>
+                    </a>
+                    <span class='splitline'></span>
+                    <a href='javascript:void(0)' onclick='return copyClick(178287214);' class='fl control-items'>
+                      <i class='index_iconfont fs18'>&#xe66d;</i>
+                      <span class='vam'>复制</span>
+                    </a>
+                    <a href='javascript:void(0)' class='fl control-items' title='删除此问卷'
+                       onclick='deleteClick(178287214);'>
+                      <i class='index_iconfont fs18'>&#xe66f;</i>
+                      <span class='vam'>删除</span>
+                    </a>
+                    <a href='javascript:void(0)' class='fl control-items' onclick='updateVIP(1,null,64)'>
+                      <i class='index_iconfont fs18'>&#xe670;</i>
+                      <span class='vam'>文件夹</span>
+                    </a>
+                    <a class='fl control-items' href='javascript:void(0)'
+                       onclick='PDF_launch("/wjx/notify/notify.aspx?activityid=178287214",380,318,null,"新增答卷时提醒"); '>
+                      <i class='index_iconfont fs18'>&#xe66e;</i>
+                      <span class='vam'>提醒</span>
+                    </a>
+                  </div>
+                </dd>
+              </dl>
+            </div>
+            <div id="ctl01_ContentPlaceHolder1_lmlpage" class="wjxui-page clearfix" style="padding-bottom: 110px;">
+              <div id="ctl01_ContentPlaceHolder1_pagehttml" class="page-list pager-linkpage changePage fr"></div>
+            </div>
+            <div id="vipEmpty" class="bt tac" style="display: none">
+              <div id="vipCont">
+                <span class="vipIconWrap"></span>
+                <p class="vipText"></p>
+              </div>
+              <a class="wjxui-btn emptyBtn" target="_blank">升级至企业版</a>
             </div>
           </div>
         </div>
       </div>
-      <input type="hidden" name="ctl01$ContentPlaceHolder1$hfActivity" id="ctl01_ContentPlaceHolder1_hfActivity"/>
-      <input type="hidden" name="ctl01$ContentPlaceHolder1$hfStatus" id="ctl01_ContentPlaceHolder1_hfStatus"/>
-      <input type="hidden" name="ctl01$ContentPlaceHolder1$hfFolderName" id="ctl01_ContentPlaceHolder1_hfFolderName"/>
-      <input type="submit" name="ctl01$ContentPlaceHolder1$btnStatusChange" value="发布"
-             id="ctl01_ContentPlaceHolder1_btnStatusChange" style="display: none;"/>
-      <input type="submit" name="ctl01$ContentPlaceHolder1$btnDelete" value="删除"
-             id="ctl01_ContentPlaceHolder1_btnDelete" style="display: none;"/>
-      <input type="submit" name="ctl01$ContentPlaceHolder1$btnSetFolder" value="设置文件夹"
-             id="ctl01_ContentPlaceHolder1_btnSetFolder" style="display: none;"/>
-      <input type="submit" name="ctl01$ContentPlaceHolder1$btnDeleteFolder" value="删除文件夹"
-             id="ctl01_ContentPlaceHolder1_btnDeleteFolder" style="display: none;"/>
-      <script type="text/javascript">
-        var pageIndex = 1;
-        var btnSub = document.getElementById("ctl01_ContentPlaceHolder1_btnSub");
-        var btnDelete = document.getElementById("ctl01_ContentPlaceHolder1_btnDelete")
-        var btnDeleteFolder = document.getElementById("ctl01_ContentPlaceHolder1_btnDeleteFolder");
-        var hasUpdate = 0;
-        var curSetFolder = null;
-        var selectChildAccount = document.getElementById("ctl01_ContentPlaceHolder1_selectChildAccount");
+    </form>
+    <input type="hidden" name="ctl01$ContentPlaceHolder1$hfActivity" id="ctl01_ContentPlaceHolder1_hfActivity"/>
+    <input type="hidden" name="ctl01$ContentPlaceHolder1$hfStatus" id="ctl01_ContentPlaceHolder1_hfStatus"/>
+    <input type="hidden" name="ctl01$ContentPlaceHolder1$hfFolderName" id="ctl01_ContentPlaceHolder1_hfFolderName"/>
+    <input type="submit" name="ctl01$ContentPlaceHolder1$btnStatusChange" value="发布"
+           id="ctl01_ContentPlaceHolder1_btnStatusChange" style="display: none;"/>
+    <input type="submit" name="ctl01$ContentPlaceHolder1$btnDelete" value="删除" id="ctl01_ContentPlaceHolder1_btnDelete"
+           style="display: none;"/>
+    <input type="submit" name="ctl01$ContentPlaceHolder1$btnSetFolder" value="设置文件夹"
+           id="ctl01_ContentPlaceHolder1_btnSetFolder" style="display: none;"/>
+    <input type="submit" name="ctl01$ContentPlaceHolder1$btnDeleteFolder" value="删除文件夹"
+           id="ctl01_ContentPlaceHolder1_btnDeleteFolder" style="display: none;"/>
+    <script type="text/javascript">
+      var pageIndex = 1;
+      var btnSub = document.getElementById("ctl01_ContentPlaceHolder1_btnSub");
+      var btnDelete = document.getElementById("ctl01_ContentPlaceHolder1_btnDelete")
+      var btnDeleteFolder = document.getElementById("ctl01_ContentPlaceHolder1_btnDeleteFolder");
+      var hasUpdate = 0;
+      var curSetFolder = null;
+      var selectChildAccount = document.getElementById("ctl01_ContentPlaceHolder1_selectChildAccount");
 
-        var hidStatus = document.getElementById("ctl01_ContentPlaceHolder1_hidStatus");
+      var hidStatus = document.getElementById("ctl01_ContentPlaceHolder1_hidStatus");
         var btnSub = document.getElementById("ctl01_ContentPlaceHolder1_btnSub");
         var divEmpty = document.getElementById("ctl01_ContentPlaceHolder1_divEmpty");
         var userName = "手机用户pczix7v5b_220815pu0i";
@@ -325,7 +518,6 @@
         curSelAccount.html(curSelAccount.text()).parent().parent().css("margin", "6px")
       </script>
       <div style="display: none;" id="divVideo"></div>
-    </form>
   </div>
 </div>
 <div style="display:none;">
