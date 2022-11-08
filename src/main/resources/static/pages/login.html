@@ -35,10 +35,31 @@
                 if (result.code == "666") {
                     layer.msg("登录成功", {icon: 1});
                     setTimeout(function () {
-                        window.location.href = 'questionnariemanage.html';
+                        window.location.href = 'userManage.html';
+
                     }, 500)
                 }else{
                     layer.msg("登录失败，用户名或密码不正确", {icon: 1});
+                }
+            });
+        }
+        function registerUser() {
+            var url = '/login';
+            var data = {
+
+                "registerName": document.getElementById("registerName").value,
+                "registerPhone": document.getElementById("registerPhone ").value,
+                "registerPwd":document.getElementById("registerPwd").value,
+            };
+            commonAjaxPost(true, url, data, function (result){
+                if (result.code == "666") {
+                    layer.msg("注册成功", {icon: 1});
+                    setTimeout(function () {
+                        window.location.href = 'userManage.html';
+
+                    }, 500)
+                }else{
+                    layer.msg("注册失败，验证码不正确", {icon: 1});
                 }
             });
         }
@@ -68,11 +89,11 @@
         <p class="signup-value">SIGN UP</p>
         <button class="reset" onclick="massage()">点击获取验证码</button>
         <form action="">
-            <input type="text" class="signup-num" placeholder="请输入账号">
-            <input type="password" class="signup-pwd" id="pwd1" placeholder="请输入密码">
-            <input type="text" class="signup-tele" placeholder="请输入手机号">
+            <input id="registerName" type="text" class="signup-num" placeholder="请输入账号">
+            <input id="registerPwd" type="password" class="signup-pwd" id="pwd1" placeholder="请输入密码">
+            <input id="registerPhone "type="text" class="signup-tele" placeholder="请输入手机号">
             <input type="text" class="write" placeholder="********验证码已发送********">
-            <input type="submit" value="注册" class="signup-button">
+            <input type="submit" value="注册" class="signup-button" onclick="registerUser()">
         </form>
     </div>
     <div class="change-login-box">
