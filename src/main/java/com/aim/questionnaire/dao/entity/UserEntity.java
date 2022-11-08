@@ -6,6 +6,16 @@ import java.util.List;
 
 public class UserEntity implements Serializable {
 
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     private static final long serialVersionUID = 1L;
     /**
      *

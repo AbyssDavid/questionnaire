@@ -1,5 +1,6 @@
 package com.aim.questionnaire.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,13 +31,13 @@ import com.aim.questionnaire.service.UserService;
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
-    
+
     @Autowired
     private UserService userService;
 
     @Autowired
     private UserEntityMapper userEntityMapper;
-   
+
     /**
      * 用户登录
      * @param userEntity
@@ -137,7 +138,7 @@ public class UserController {
     @RequestMapping(value = "/modifyUserInfo",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity modifyUserInfo(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        
+
         return httpResponseEntity;
     }
 
@@ -150,7 +151,7 @@ public class UserController {
     @RequestMapping(value = "/selectUserInfoById",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity selectUserInfoById(@RequestBody UserEntity userEntity) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        
+
         return httpResponseEntity;
     }
 
@@ -164,7 +165,7 @@ public class UserController {
     @RequestMapping(value = "/modifyUserStatus",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity modifyUserStatus(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        
+
         return httpResponseEntity;
     }
     /**
@@ -175,7 +176,7 @@ public class UserController {
     @RequestMapping(value = "/deleteUserInfoById",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity deteleUserInfoById(@RequestBody UserEntity userEntity) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        
+
         return httpResponseEntity;
     }
 
@@ -187,7 +188,28 @@ public class UserController {
     @RequestMapping(value = "/error")
     public HttpResponseEntity logout() {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        
+
         return httpResponseEntity;
     }
+
+    @RequestMapping(value = "/register")
+    public HttpResponseEntity registerUser(@RequestBody Map<String , String > map){
+
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        Map<String , Object > map1 = new HashMap<>();
+        map1.put("username",map.get("registerName"));
+        map1.put("phone",map.get("registerPhone"));
+        map1.put("password",map.get("registerPwd"));
+
+        if (userService.addUserInfo(map1)==3){
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+        }else {
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        }
+
+        return httpResponseEntity;
+
+    }
+
+
 }

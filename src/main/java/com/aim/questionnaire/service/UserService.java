@@ -67,13 +67,13 @@ public class UserService {
         map.put("creationDate",date);
         map.put("lastUpdateDate",date);
         //创建人
-        String user = map.get("creadBy").toString();//需要更改
+        String user = "?";//需要更改
 //        String user="admin";
         map.put("createdBy",user);
         map.put("lastUpdatedBy",user);
         //前台传入的时间戳转换
-        String startTimeStr = map.get("startTime").toString();
-        String endTimeStr = map.get("stopTime").toString();
+        String startTimeStr ="2022-11-08T15:34:31";
+        String endTimeStr = "2022-11-08T15:34:31";
         Date startTime = DateUtil.getMyTime(startTimeStr);
         Date endTime = DateUtil.getMyTime(endTimeStr);
         map.put("startTime",startTime);
@@ -107,7 +107,7 @@ public class UserService {
      * @return
      */
     public Map<String,Object> selectUserInfoById(UserEntity userEntity) {
-  
+
         return null;
     }
 
@@ -119,5 +119,13 @@ public class UserService {
     public int deteleUserInfoById(UserEntity userEntity) {
 
         return 0;
+    }
+
+    public UserEntity selectUserInfoByUsername(String username) {
+
+        UserEntity userEntity = userEntityMapper.selectAllByName(username);
+
+        return userEntity;
+
     }
 }
