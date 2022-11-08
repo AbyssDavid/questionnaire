@@ -42,73 +42,11 @@ function search_dom_method(a, b) {
     })
 }
 
-function getWxData(a, b) {
-    var c = document.getElementById(a);
-    c.hasSrc || $.get("/Handler/Getwxdata.ashx?t=" + (new Date).valueOf(), function (a) {
-        if (a) {
-            c.hasSrc = !0;
-            var d = a.split("§");
-            "1" == d[0] ? c.innerHTML = '<img src="' + d[1] + '" width="120" height="120" style="border: 0;" alt="" />' : d[1] ? (c.innerHTML = '<img src="' + d[1] + '" width="120" height="120" style="border: 0;" alt="" />',
-                document.getElementById(b).innerText = d[2]) : (document.getElementById(b).innerText = "已绑定",
-                c.innerHTML = "")
-        }
-    })
-}
 
 function restore_style(a) {
     a.click(function () {
         $(this).parent().parent().removeClass("selected enlarge narrow").find(".open-questionnaire").hide()
     })
-}
-
-function Setxingbiao(a) {
-    var b, c, d, e;
-    return 1 != window.isVip ? (alert("提示：星标功能只针对企业版用户提供！"),
-        void 0) : (b = $(a).attr("aid"),
-        c = $(a).find("i").eq(0),
-        d = c.hasClass("cur") ? 2 : 1,
-        e = "/handler/setuserxingbiao.ashx?ActivityId=" + b + "&type=" + d,
-        $.ajax({
-            url: e,
-            async: !0,
-            type: "GET",
-            timeout: 5e3,
-            success: function () {
-                if (1 == d) {
-                    xbListCount++,
-                        c.addClass("cur");
-                    var b = document.getElementById("astarQ");
-                    b || btnSub.click()
-                } else
-                    xbListCount--,
-                        c.removeClass("cur")
-            }
-        }),
-        !0)
-}
-
-function _addFavorite() {
-    var a = "https://www.wjx.cn/"
-        , b = "问卷星"
-        , c = navigator.userAgent.toLowerCase();
-    if (c.indexOf("360se") > -1)
-        alert("由于360浏览器功能限制，请按 Ctrl+D 手动收藏！");
-    else if (c.indexOf("msie 8") > -1)
-        window.external.AddToFavoritesBar(a, b);
-    else if (document.all)
-        try {
-            window.external.addFavorite(a, b)
-        } catch (d) {
-            alert("您的浏览器不支持,请按 Ctrl+D 手动收藏!")
-        }
-    else if (window.sidebar)
-        try {
-            window.sidebar.addPanel(b, a, "")
-        } catch (d) {
-        }
-    else
-        alert("您的浏览器不支持,请按 Ctrl+D 手动收藏!");
-    return !1
 }
 
 function searchQ(a) {
@@ -136,11 +74,6 @@ function deleteClick(a) {
             hfActivity.value = a,
             btnDelete.click()
     }),
-        !1
-}
-
-function copyClick(a) {
-    return PDF_launch("/wjx/manage/copyq.aspx?activity=" + a, 500, 302, null, "复制问卷"),
         !1
 }
 
@@ -212,18 +145,6 @@ function loadUpdate(a) {
         }, 200)
 }
 
-function generateEInvoice(a, b) {
-    if (fapiaoHash[a])
-        return alert("提示：已经提交生成任务，生成成功后会发送系统消息给您！"),
-            void 0;
-    fapiaoHash[a] = 1;
-    var c = "/handler/downloadInvoice.ashx?invoiceId=" + a;
-    return $.get(c, function () {
-        b.parentNode.innerHTML = "正在生成中...<br/>生成后会发送消息通知您"
-    }),
-        !0
-}
-
 function delFavorite(a, b) {
     a.stopPropagation(),
         confirmnew("确定不再显示此信息吗？", function () {
@@ -236,33 +157,8 @@ function delFavorite(a, b) {
         })
 }
 
-function closePrompt(a) {
-    return confirmnew("您确认要隐藏消息提示信息？", function () {
-        var b, c;
-        a.parentNode.style.display = "none",
-            $("#fixheight").height(56),
-            $(".control_left").css("top", 80),
-            b = "MyQuesHid_" + userName,
-            c = new Date,
-            c.setHours(c.getHours() + 72),
-            setCookie(b, "1", c.toGMTString(), "/", "", null)
-    }),
-        !1
-}
-
 function setCookie(a, b, c, d, e, f) {
     document.cookie = a + "=" + escape(b) + (c ? "; expires=" + c : "") + (d ? "; path=" + d : "") + (e ? "; domain=" + e : "") + (f ? "; secure" : "")
-}
-
-function addtolog(a, b, c, d, e, f) {
-    var i, g = document.createElement("img");
-    return e = e || "promote",
-        i = "//sojump.cn-hangzhou.log.aliyuncs.com/logstores/activitystat/track.gif?APIVersion=0.6.0&activity=" + a + "&type=" + e + "&username=" + encodeURIComponent(b),
-    c && (i += "&classify=" + encodeURIComponent(c)),
-    d && (i += "&jointimes=" + d),
-    f && (i += "&name=" + encodeURIComponent(f)),
-        g.src = i,
-        !0
 }
 
 function addLogGuanZhu() {
