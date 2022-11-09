@@ -176,10 +176,15 @@
 			<version>1.2.80</version>
 		</dependency>
 		<dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.0.3</version>
-        </dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>5.2.8.RELEASE</version>
+		</dependency>
 
 	</dependencies>
 
