@@ -26,7 +26,7 @@
         }
 
         function goin() {
-            var url = '/login';
+            var url = '/admin/userLogin';
             var data = {
                 "username": document.getElementById("username").value,
                 "password":document.getElementById("password").value,
@@ -44,7 +44,7 @@
             });
         }
         function registerUser() {
-            var url = '/login';
+            var url = '/admin/register';
             var data = {
 
                 "registerName": document.getElementById("registerName").value,
