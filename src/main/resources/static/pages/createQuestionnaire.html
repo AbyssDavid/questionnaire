@@ -33,9 +33,6 @@
             transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         }
 
-        /*.historyQuestionClass{*/
-        /*display: block;*/
-        /*}*/
         #historyQuestion {
             display: none;
         }
@@ -80,21 +77,19 @@
                     </div>
                     <div class="form-group">
                         <label for="questDescribeModal" class="control-label">模板说明:</label>
-                        <textarea type="text" id="questDescribeModal" class="form-control" style="width: 85%;vertical-align: -webkit-baseline-middle;"></textarea>
+                        <textarea type="text" id="questDescribeModal" class="form-control"
+                                  style="width: 85%;"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="cancel()">取消</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="cancel()">取消
+                    </button>
                     <button type="button" class="btn btn-primary btn-sm" onclick="createModal()">确定</button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
+            </div>
+        </div>
     </div>
     <div class="BS-box" style="text-align:left;">
-        <div>
-            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
-                   value="/wEPDwUKLTY3MDU3Njg2NA9kFgJmD2QWDAICDxYCHgdWaXNpYmxlaGQCAw8WAh8AaGQCBA8WAh8AZ2QCBQ8PFgIeBFRleHQFCzE1ODQwMDY4OTczZGQCBg8WAh8AaGQCCA8WAh8AaGRkIOF/W2JYq+I88lfP3gF6rq014OM="/>
-        </div>
         <div>
             <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="4BF947A9"/>
         </div>
@@ -107,17 +102,12 @@
         </div>
         <div class="section main-wrapper">
             <div style="width: 737px;margin-top: 20px">
-                <label class="control-label fontWeight" style="font-size: 26px;margin-left: 124px;font-weight: 500">所属项目:</label>
-                <input class="form-control selectpicker" id="belongProject" title='所属项目' data-first-option="false"
-                       data-live-search="true" readonly="readonly" style="margin-left: 16px"/>
-            </div>
-            <div style="width: 737px;margin-top: 20px">
                 <label class="control-label fontWeight" style="font-size: 26px;margin-left: 124px;font-weight: 500">调查类型:</label>
                 <select class="form-control selectpicker" id="belongType" title='所属调查类型' data-first-option="false" onchange="changeType()"
                         data-live-search="true" style="margin-left: 16px">
                 </select>
             </div>
-            <h2 style="margin-top: 20px; width: 470px;font-size: 26px;margin-bottom: 15px;">选择模板:</h2>
+            <h2 style="margin-top: 20px; width: 470px;font-size: 26px;margin-bottom: 50px;">选择模板:</h2>
             <div class="module-box clearfix" id="divModule" style="margin: 0 auto;">
                 <div class="figure">
                     <div class="pic-box icon survey-icon pull-left"></div>
