@@ -32,14 +32,40 @@
 <body>
 <form action="">
     <!--        <h2 class="forget-value">Forget password</h2>-->
-    <p class="security" style="width: 400px;padding-top: 24px;font-size: 18px">您的密保问题是：“爸爸的生日”</p>
+    <p class="security" style="width: 400px;padding-top: 24px;font-size: 18px">您的问题是</p>
     <button class="btn-return" style="width: 90px;margin-left: 150px;margin-top: 60px;font-size: 16px" onclick="back()">
         返回
     </button>
 </form>
 </body>
 <script>
+    $(function () {
+        var url = '/admin/register';//TODO:改成能返回传入用户的账号的密保问题的地址，返回对应的密保问题
+        var data = {
+            "username":getCookie("username"),
+        };
+        commonAjaxPost(true, url, data, function (result){
+            document.getElementById("security").innerHTML = result.problem;
+        });
+    });
+    // function getProblem(){
+    //     var url = '/admin/register';
+    //     var data = {
+    //         "username":getCookie("username"),
+    //     };
+    //     commonAjaxPost(true, url, data, function (result){
+    //         //document.getElementById("security").innerHTML = result.problem;
+    //     });
+    //     var str = 123;
+    //     return str;
+    // }
+    // var str = getProblem();
+    // document.getElementById("security").innerHTML = '123';
+    // (function() {$("#security").html(getProblem());})
+
+
     function back() {
+
         window.close();
     }
 </script>

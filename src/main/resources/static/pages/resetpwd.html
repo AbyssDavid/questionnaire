@@ -87,4 +87,23 @@
                 in_password2.setCustomValidity("两次密码不一致");
             }
         }
+        function restePwd(){
+            var url = '/admin/register';//TODO:改成能返回密码修改成功信息的地址,判断有没有这个用户，没有就让他回去注册
+            var data = {
+                "username":getCookie("username"),
+                "resetPwd":in_password1.value,
+            };
+            commonAjaxPost(true, url, data, function (result){
+                if (result.code == "666") {
+                    layer.msg("修改成功", {icon: 1});
+                    setTimeout(function () {
+                        window.location.href = 'login.html';
+                    }, 500)
+                }else{
+                    window.location.href = 'register.html';
+                    layer.msg("修改失败,未能查询到您，请先注册", {icon: 1});
+                }
+            });
+        }
+
     </script>

@@ -34,7 +34,7 @@ function TableInit() {
     //初始化Table
     oTableInit.Init = function () {
         $('#userTable').bootstrapTable({
-            url: httpRequestUrl + '/admin/queryUserList',         //请求后台的URL（*）
+            url: httpRequestUrl + '/admin/queryUserList',//请求后台的URL（*）TODO:租户的管理，显示所有该租户的用户，跟老项目的用户管理差不多，返回该租户下用户的行号，用户名，密码，开始时间，结束时间，用户状态（开启或关闭
             method: 'POST',                      //请求方式（*）
             striped: true,                      //是否显示行间隔色
             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -140,7 +140,7 @@ function TableInit() {
     function queryParams(params) {
         var username = $("#keyWord").val();
         //console.log(userName);
-        var temp = {//这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+        var temp = {//这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
             // rows: params.limit,//页面大小
             pageNum: params.pageNumber,
             pageSize: params.pageSize,

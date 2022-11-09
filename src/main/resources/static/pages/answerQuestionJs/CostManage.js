@@ -25,16 +25,15 @@ $('#userManager').on("keydown", function (event) {
 });
 
 function getUserList() {
-    $("#userTable").bootstrapTable('refresh');
+    $("#userTable").bootstrapTable('refresh');//刷新url
 }
 
 function TableInit() {
-
     var oTableInit = new Object();
     //初始化Table
     oTableInit.Init = function () {
         $('#userTable').bootstrapTable({
-            url: httpRequestUrl + '/admin/queryUserList',         //请求后台的URL（*）
+            url: httpRequestUrl + '/admin/queryUserList',//请求后台的URL（*）TODO:管理员的管理，这个要改成后台返回租户信息的url,需要返回租户序号（后台表里的行号）账号，问卷次数，费用，操作里面是各种编辑按钮
             method: 'POST',                      //请求方式（*）
             striped: true,                      //是否显示行间隔色
             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -98,7 +97,7 @@ function TableInit() {
     function queryParams(params) {
         var username = $("#keyWord").val();
         //console.log(userName);
-        var temp = {//这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+        var temp = {//这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
             // rows: params.limit,//页面大小
             pageNum: params.pageNumber,
             pageSize: params.pageSize,

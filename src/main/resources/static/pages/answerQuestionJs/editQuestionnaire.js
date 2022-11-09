@@ -116,7 +116,7 @@ function createTimePicker() {
     //console.log(nowTime);
 
     // var date = new Date();
-    // var milliseconds = date.getTime() + 1000 * 60 * 60 * 24 * 30;                                    //n代表天数,加号表示未来n天的此刻时间,减号表示过去n天的此刻时间   n:7
+    // var milliseconds = date.getTime() + 1000 * 60 * 60 * 24 * 30; //n代表天数,加号表示未来n天的此刻时间,减号表示过去n天的此刻时间   n:7
     // var newDate = new Date(milliseconds);
     // var dateAfterNow = timeFormat(newDate);
 
