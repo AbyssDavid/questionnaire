@@ -6,12 +6,18 @@
     <link rel="stylesheet" href="../plugins/layui-v2.3.0/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="answerQuestionCss/wenjuan_ht.css">
 </head>
+<style>
+    body {
+        background: url("../images/bg.jpg");
+        background-size: 110% 110%;
+    }
+</style>
 <body>
 <div class="all_660">
     <header>
         <div>
-            <button class="editFinish" onclick="editFinish()">完成编辑</button>
-            <button class="preview" onclick="previewQuestion()">
+            <button class="editFinish" onclick="editFinish()" style="font-size: 18px">完成编辑</button>
+            <button class="preview" onclick="location.href='previewQuestionnaire.html'">
                 <i class="design-icon design-preview"></i>预览
             </button>
         </div>
@@ -68,9 +74,7 @@
                                 <input name="" type="text" class="input_wenbk" value="" placeholder="选项"
                                        onblur="if(!this.value)this.value='【单选】'"
                                        onclick="if(this.value&amp;&amp;this.value=='【单选】' )  this.value=''">
-                                <!--<label>-->
-                                <!--<input name="" type="checkbox" value="" class="fxk"> <span>可填空</span>-->
-                                <!--</label> -->
+
                                 <a href="javascript:void(0);" onclick="deleteOption()" class="del_xm">删除</a>
                             </div>
                         </div>
@@ -181,10 +185,7 @@
                                                 <input name="" type="text" class="input_wenbk jzwent_input lb_grade" value="5"
                                                        onblur="if(!this.value)this.value='选项'"
                                                        onclick="if(this.value&amp;&amp;this.value=='选项' )  this.value=''">
-                                                <!--<label class="gradeChoose">-->
-                                                <!--<input name="" type="checkbox" value="" class="fxk">-->
-                                                <!--<span>不计分</span>-->
-                                                <!--</label>-->
+
                                                 <a href="javascript:void(0);" class="del_xm">删除</a>
                                             </div>
                                             <div class="kzjxx_iteam">
@@ -194,10 +195,7 @@
                                                 <input name="" type="text" class="input_wenbk jzwent_input lb_grade" value="4"
                                                        onblur="if(!this.value)this.value='选项'"
                                                        onclick="if(this.value&amp;&amp;this.value=='选项' )  this.value=''">
-                                                <!--<label class="gradeChoose">-->
-                                                <!--<input name="" type="checkbox" value="" class="fxk">-->
-                                                <!--<span>不计分</span>-->
-                                                <!--</label>-->
+
                                                 <a href="javascript:void(0);" class="del_xm">删除</a>
                                             </div>
                                             <div class="kzjxx_iteam">
@@ -207,10 +205,7 @@
                                                 <input name="" type="text" class="input_wenbk jzwent_input lb_grade" value="3"
                                                        onblur="if(!this.value)this.value='选项'"
                                                        onclick="if(this.value&amp;&amp;this.value=='选项' )  this.value=''">
-                                                <!--<label class="gradeChoose">-->
-                                                <!--<input name="" type="checkbox" value="" class="fxk">-->
-                                                <!--<span>不计分</span>-->
-                                                <!--</label>-->
+
                                                 <a href="javascript:void(0);" class="del_xm">删除</a>
                                             </div>
                                             <div class="kzjxx_iteam">
@@ -220,10 +215,7 @@
                                                 <input name="" type="text" class="input_wenbk jzwent_input lb_grade" value="2"
                                                        onblur="if(!this.value)this.value='选项'"
                                                        onclick="if(this.value&amp;&amp;this.value=='选项' )  this.value=''">
-                                                <!--<label class="gradeChoose">-->
-                                                <!--<input name="" type="checkbox" value="" class="fxk">-->
-                                                <!--<span>不计分</span>-->
-                                                <!--</label>-->
+
                                                 <a href="javascript:void(0);" class="del_xm">删除</a>
                                             </div>
                                             <div class="kzjxx_iteam">
@@ -233,10 +225,7 @@
                                                 <input name="" type="text" class="input_wenbk jzwent_input lb_grade" value="1"
                                                        onblur="if(!this.value)this.value='选项'"
                                                        onclick="if(this.value&amp;&amp;this.value=='选项' )  this.value=''">
-                                                <!--<label class="gradeChoose">-->
-                                                <!--<input name="" type="checkbox" value="" class="fxk">-->
-                                                <!--<span>不计分</span>-->
-                                                <!--</label>-->
+
                                                 <a href="javascript:void(0);" class="del_xm">删除</a>
                                             </div>
                                         </div>
