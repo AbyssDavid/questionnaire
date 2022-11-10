@@ -5,6 +5,9 @@
     <title>用户管理</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- font-awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
 
@@ -16,6 +19,8 @@
     <link rel="stylesheet" href="../css/wjxmaster.css">
     <link rel="stylesheet" href="answerQuestionCss/myquestionnaires.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
+
     <script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/bootstrap-table/js/bootstrap-table.js"></script>
@@ -23,6 +28,9 @@
     <script src="../plugins/layer/layer.js"></script>
     <script src="../plugins/cookie/jquery.cookie.js"></script>
     <script src="../common/common.js"></script>
+    <!-- Datepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
     <script src="answerQuestionJs/userManage.js"></script>
     <style>
         .create-btn {
@@ -232,6 +240,100 @@
                     <!--<div id="ctl01_ContentPlaceHolder1_surveyfolder" class="survey__folder"></div>-->
                     <table id="userTable" style="text-align:  center;font-size: 14px;margin: auto;word-wrap:break-word; word-break:break-all" ></table>
                     <table class="questionnaire_tableAll"></table>
+
+
+                    <!-- Start model for reset password-->
+                    <!-- Modal -->
+                    <div class="modal fade" id="ChangePasswordModal" tabindex="-1" role="dialog" aria-labelledby="ChangePasswordModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ChangePasswordModalLabel">Change Password</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <span id = "message" style="color:red"> </span>
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" name="userid" id="userid">
+                                        </div>
+<!--                                      <div class="form-group">-->
+<!--                                        <label for="recipient-name" class="col-form-label">Old Password:</label>-->
+<!--                                        <input type="text" class="form-control" name="oldPassword" id="oldPassword">-->
+<!--                                      </div>-->
+                                      <div class="form-group">
+
+                                          <label for="message-text" class="col-form-label">New Password:</label>
+                                        <input type="password" class="form-control" id="newPassword"  name="newPassword">
+                                      </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Confirm Password:</label>
+                                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="changePassword()">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end model for reset password-->
+
+                    <!-- -->
+                    <div class="modal fade" id="ChangeUserInfoModal" tabindex="-1" role="dialog" aria-labelledby="ChangeUserInfoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ChangeUserInfoModalLabel">Change User Info</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" name="userid" id="useridedit">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">Username:</label>
+                                            <input type="text" class="form-control" name="editUsernam" id="editUsernam">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Start Time:</label>
+                                            <div class="datepicker date input-group">
+                                                <input type="text" placeholder="Choose Date" class="form-control" name="startTime" id="startTime">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Stop Time:</label>
+                                            <div class="datepicker date input-group">
+                                                <input type="text" placeholder="Choose Date" class="form-control" name="stopTime" id="stopTime">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="updateUserInfo()">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- -->
                 </div>
             </div>
         </div>

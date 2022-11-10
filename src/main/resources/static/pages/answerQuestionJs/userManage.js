@@ -9,6 +9,14 @@ $(function () {
     oTable.Init();
 });
 
+$(function () {
+    $('.datepicker').datepicker({
+        language: "es",
+        autoclose: true,
+        format: "yyyy/mm/dd"
+    });
+});
+
 //回车事件
 $(document).keydown(function (event) {
     if (event.keyCode == 13) {
@@ -172,9 +180,9 @@ window.operateEvents = {
 function addFunctionAlty(value, row, index) {
     var btnText = '';
 
-    btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"resetPassword(" + "'" + row.id + "'" + ")\" style='width: 77px;' class=\"btn btn-default-g ajax-link\">重置密码</button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_look\" data-toggle=\"modal\" data-target=\"#ChangePasswordModal\" onclick=\"resetPassword(" + "'" + row.id + "'" + ")\" style='width: 77px;' class=\"btn btn-default-g ajax-link\">重置密码</button>&nbsp;&nbsp;";
 
-    btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"editUserPage(" + "'" + row.id + "')\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_look\" data-toggle=\"modal\" data-target=\"#ChangeUserInfoModal\" onclick=\"editUserPage(" + "'" + row.id + "'" + ")\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
 
     if (row.status == "1") {
         btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"changeStatus(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">关闭</button>&nbsp;&nbsp;";
@@ -188,8 +196,78 @@ function addFunctionAlty(value, row, index) {
 
 //重置密码
 function resetPassword(id) {
-    alert("重置密码")
+    // $(this).parents("tr").find(".username").text();
+    // alert("重置密码")
+    console.log("hi "+id)
 
+    var url = '/admin/selectUserInfoById';
+    var userid = id
+
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: { "userid": userid },
+        contentType: "application/json",
+        success: function (response) {
+            if (response.code == "666") {
+                console.log("the data are "+ JSON.stringify(response))
+
+                // editUsername=response.data.username;
+                // oldPassword=response.data.password;
+                // console.log("response.data.password"+response.data.password)
+                document.getElementById("userid").value = userid;
+
+            }else{
+            }
+        },
+        error: function (thrownError) {
+            console.log(thrownError);
+        }
+    });
+    /*commonAjaxPost(true, url, userid, function (result){
+        if (result.code == "666") {
+            console.log(result)
+
+        }else{
+        }
+    });
+*/
+}
+
+function changePassword(){
+    var userid=document.getElementById("userid").value;
+    var newPassword= document.getElementById("newPassword").value;
+    var confirmPassword= document.getElementById("confirmPassword").value;
+    console.log("newPassword="+newPassword+"confirmPassword="+confirmPassword);
+    document.getElementById("message").innerHTML = "";
+
+
+    if(newPassword == "" || confirmPassword =="") {
+        document.getElementById("message").innerHTML = "**Fill the password please!";
+        return false;
+    }
+    if (newPassword!=confirmPassword){
+        document.getElementById("message").innerHTML = "**Password not matched";
+        return false;
+    }
+
+    var url = '/admin/updateUserpassword';
+    var data = {
+        "id":userid,
+        "password": confirmPassword,
+    };
+    commonAjaxPost(true, url, data, function (result){
+        if (result.code == "666") {
+            layer.msg("注册成功", {icon: 1});
+            setTimeout(function () {
+                window.location.href = 'userManage.html';
+            }, 500)
+
+        }else{
+            layer.msg("result.code "+result.code, {icon: 1});
+        }
+    });
 }
 
 // 打开创建用户页
@@ -205,9 +283,66 @@ function openCreateUserPage(id, value) {
     window.location.href = 'createNewUser.html';
 }
 
-function editUserPage() {
+function updateUserInfo(){
+    var userid=document.getElementById("useridedit").value;
+    var editUsernam= document.getElementById("editUsernam").value;
+    var startTime= document.getElementById("startTime").value ;
+    var stopTime = document.getElementById("stopTime").value;
 
-    alert("编辑用户")
+    var url = '/admin/modifyUserInfo';
+    var data = {
+        "id":userid,
+        "username": editUsernam,
+        "startTime": startTime,
+        "stopTime":stopTime,
+    };
+    commonAjaxPost(true, url, data, function (result){
+        if (result.code == "666") {
+            layer.msg("注册成功", {icon: 1});
+            setTimeout(function () {
+                window.location.href = 'userManage.html';
+            }, 500)
+
+        }else{
+            layer.msg("result.code "+result.code, {icon: 1});
+        }
+    });
+
+
+    console.log("userid edit"+userid)
+}
+function editUserPage(id) {
+
+    // alert("编辑用户")
+
+    console.log("hi "+id)
+
+    var url = '/admin/selectUserInfoById';
+    var userid = id
+
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: { "userid": userid },
+        contentType: "application/json",
+        success: function (response) {
+            if (response.code == "666") {
+                console.log("the data are "+ JSON.stringify(response))
+
+                document.getElementById("useridedit").value = userid;
+                document.getElementById("editUsernam").value = response.data.username;
+                document.getElementById("startTime").value = response.data.startTime;
+                document.getElementById("stopTime").value = response.data.stopTime;
+
+
+            }else{
+            }
+        },
+        error: function (thrownError) {
+            console.log(thrownError);
+        }
+    });
 }
 // 修改用户状态（禁用、开启）
 function changeStatus(index) {
@@ -220,4 +355,6 @@ function deleteUser(id) {
 
     alert("删除用户")
 }
+
+
 

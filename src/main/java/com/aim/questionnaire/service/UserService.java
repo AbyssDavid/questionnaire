@@ -89,7 +89,34 @@ public class UserService {
      */
     public int modifyUserInfo(Map<String, Object> map) {
 
+        try{
+            String startTimeStr = map.get("startTime").toString();
+            String endTimeStr = map.get("stopTime").toString();
+//            Date startTime = DateUtil.getMyTime(startTimeStr);
+//            Date endTime = DateUtil.getMyTime(endTimeStr);
+//            map.put("startTime",startTime);
+//            map.put("stopTime",endTime);
+            int result =userEntityMapper.modifyUserInfo(map);
+            System.out.println("startTimeStr="+startTimeStr);
+            return result;
+        }catch (Exception e){
+            System.out.println("service 创建用户的基本信息>>>>>>>>>>>" + e.getLocalizedMessage());
+        }
         return 0;
+
+    }
+
+    public int updateUserpassword(Map<String, Object> map) {
+
+        try{
+
+            int result =userEntityMapper.updateUserpassword(map);
+            return result;
+        }catch (Exception e){
+            System.out.println("change password service 创建用户的基本信息>>>>>>>>>>>" + e.getLocalizedMessage());
+        }
+        return 0;
+
     }
 
     /**
