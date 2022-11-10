@@ -1,178 +1,401 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="ctl01_Head1">
-    <title>我的问卷</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
     <meta id="ctl01_keywords" name="keywords"/>
+    <title>问卷界面
+    </title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
-    <link id="ctl01_cssdefault" rel="stylesheet" type="text/css" href="../css/default.css?v=4"/>
-    <link id="ctl01_quetsioncss" rel="stylesheet" type="text/css" href="../css/myquestionnaires.css?v=11"/>
-    <link id="ctl01_cssmaster" rel="stylesheet" type="text/css" href="../css/wjxmaster.css?v=4"/>
-    <link rel="stylesheet" type="text/css" href="../css/choosetype.css?v=4"/>
-    <link rel="stylesheet" type="text/css" href="../css/folder-set.css?v=2"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-select/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.css">
+
+    <link rel="stylesheet" href="../css/wjxmaster.css">
+    <link rel="stylesheet" href="../css/myquestionnaires.css">
+
+    <link href="../css/wjxUI.css" rel="stylesheet"/>
+    <link id="ctl01_cssmaster" rel="stylesheet" type="text/css" href="answerQuestionCss/wjx.css"/>
 
 </head>
 <body>
+<div class="header">
+</div>
+<script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../plugins/bootstrap-table/js/bootstrap-table.js"></script>
+<script src="../plugins/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script src="../plugins/layer/layer.js"></script>
+<script src="../plugins/cookie/jquery.cookie.js"></script>
+<script src="../common/common.js"></script>
+<script src="../js/zhezhao.js?v=3"></script>
+<script src="../js/modernizr.js"></script>
+<script src="../js/baidutg.js?v=3"></script>
+<script src="answerQuestionJs/editProject.js"></script>
+<script src="../js/modernizr.js" type="text/javascript"></script>
+<script src="../css/myquestionnaires.css"></script>
+<script src="../css/wenjuan_ht.css"></script>
 
-<div id="BS">
+<div class="BS-box" style="text-align:left;">
 
-    <!--修改结束时间-->
-    <div class="modal fade" id="recoverRunModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         data-backdrop="static">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content" style="border-radius: 5px;">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        <span aria-hidden="true">&times;</span></button>
-                    </button>
-                    <h3 class="modal-title" id="addPointLabel">修改结束时间</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="endTimeModal" class="control-label">结束时间:</label>
-                        <input type="text" id="endTimeModal" class="form-control" >
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="recoverRunBtn()">保存</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
-
-    <div class="header">
-
-    </div>
-
-    <div class="BS-box" style="text-align:left;margin-top: 35px;">
-
-
+    <script src="../js/selectpick.js" type="text/javascript"></script>
+    <form name="aspnetForm" method="post" id="aspnetForm">
+        <div>
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="011AC131"/>
+        </div>
+        <div id="ctl01_ContentPlaceHolder1_divNotify" class="nav-header redbcg">
+        </div>
         <div class="main-wrapper">
-            <div id="ctl01_ContentPlaceHolder1_divhasques" class="my-container">
+            <div class="my-container">
                 <div class="survey-wrapper clearfix">
-                    <div class="survey-left pull-left" style="">
-                        <div id="ctl01_ContentPlaceHolder1_searchPapaer" class="survey-create clearfix">
-                            <div class="create-add pull-left">
+                    <div id="ctl01_ContentPlaceHolder1_leftControlWrap" class="control_left " style="float: left">
+                        <ul class="surveyNav">
+                            <li id="ctl01_ContentPlaceHolder1_xinbiao">
+                            </li>
+                            <div class="folderCont">
+                                <div id="ctl01_ContentPlaceHolder1_surveyfolder" class="chrome_scrollbar"></div>
+                                <div id="ctl01_ContentPlaceHolder1_folderWrap" class="folderWrap chrome_scrollbar"
+                                     style="overflow-x: auto;">
+                                    <ul></ul>
+                                </div>
+                            </div>
 
-                                <a href='createProject.html' id="gotoCreateProject" title="创建新问卷"
-                                   class="btn btn-default btn-lg pull-left create-btn">
-                                    <i class="icon create-icon"></i>创建项目</a>
-                                <div class="pull-left" style="line-height: 36px;font-size: 20px">
-                                    <input id="project" name="type" value="0"  type="radio" checked />
-                                    <label for="project">项目</label>
-                                </div>
-                                <div style="line-height: 36px;font-size: 20px" class="pull-left">
-                                    <input name="type" id="question" value="1"  type="radio" />
-                                    <label for="question">问卷</label>
-                                </div>
-                                <div id="ctl01_ContentPlaceHolder1_divInfo" class="create-search pull-left"
-                                     style="margin-right:10px;">
-                                    <input name="ctl01$ContentPlaceHolder1$txtName" type="text"
-                                           placeholder="请输入项目名称进行搜索..."
-                                           id="keyWord" class="serarchbox"
-                                           onfocus="if(placeholder=='请输入项目名称进行搜索...'){placeholder='';}"
-                                           onblur="if(placeholder==''){placeholder='请输入项目名称进行搜索...';}"
-                                    >
-                                    <div class="icon search-icon buttonboder" id="myProject"
-                                         onclick="getProjectQuest()"></div>
+                            </li>
+                            <li style="border-bottom: 0">
+                            </li>
+                        </ul>
+                        <input type="hidden" name="ctl01$ContentPlaceHolder1$hfXingbiao"
+                               id="ctl01_ContentPlaceHolder1_hfXingbiao"/>
+                        <input type="hidden" name="ctl01$ContentPlaceHolder1$hfFolder"
+                               id="ctl01_ContentPlaceHolder1_hfFolder"
+                               value="null"/>
+                        <input type="hidden" name="ctl01$ContentPlaceHolder1$hfTagId"
+                               id="ctl01_ContentPlaceHolder1_hfTagId"
+                               value="null"/>
+                        <input type="hidden" name="ctl01$ContentPlaceHolder1$hfUserName"
+                               id="ctl01_ContentPlaceHolder1_hfUserName"
+                               value="null"/>
+                        <input type="hidden" name="ctl01$ContentPlaceHolder1$HiddenField1"
+                               id="ctl01_ContentPlaceHolder1_HiddenField1" value="null"/>
+                    </div>
+                    <div class="listcont_r" style="">
+                        <div id="ctl01_ContentPlaceHolder1_divhasques" class="survey-cont">
+                            <div id="ctl01_ContentPlaceHolder1_searchPapaer" class="surveyCont_search clearfix"
+                                 style="height: 50px">
+                                <div class="create-add">
+                                    <h2 class="mySurvey fl"
+                                        style="width: 100px;height: 30px;font-size: 20px;font-weight: 700;padding-top: 0px">
+                                        问卷列表</h2>
+                                    <div id="ctl01_ContentPlaceHolder1_divInfo" class="create-search fr"
+                                         style="margin-left: 50px">
+                                        <input name="ctl01$ContentPlaceHolder1$txtName" type="text"
+                                               id="ctl01_ContentPlaceHolder1_txtName"
+                                               class="serarchbox" style="width: 180px;height:20px" }
+                                               value="请输入问卷名进行搜索..."
+                                               onkeypress="return searchQ(event);"/>
+                                        <input type="submit" name="ctl01$ContentPlaceHolder1$btnSub" value=""
+                                               id="ctl01_ContentPlaceHolder1_btnSub" style="display: none"/>
+                                        <i class="search-icon index_iconfont" onclick="btnSub.click()">&#xe668;</i>
+                                    </div>
+                                    <div class="spinner-list fs14 fr" style="padding: 10px 0; margin-right: 16px;">
 
-                                </div>
-                                <div id="ctl01_ContentPlaceHolder1_divStatus" class="pull-left">
-                                    <input name="ctl01$ContentPlaceHolder1$hidStatus" type="hidden"
-                                           id="ctl01_ContentPlaceHolder1_hidStatus" value="-1"/>
-                                    <div class="status-box">
-                                        <select class="status-cur" id="questionStatus">
-                                            <option selected value="-1">全部</option>
-                                            <option value="1">暂停</option>
-                                            <option value="2">运行</option>
-                                            <option value="3">结束</option>
-                                        </select>
+                                        <div id="ctl01_ContentPlaceHolder1_divStatus">
+                                            <input name="ctl01$ContentPlaceHolder1$hidStatus" type="hidden"
+                                                   id="ctl01_ContentPlaceHolder1_hidStatus" value="-1"/>
+                                        </div>
+                                    </div>
+                                    <div class="sort-status spinner-list fs14 fr"
+                                         style="padding: 10px 0; margin-right: 16px;">
+                                        <div id="ctl01_ContentPlaceHolder1_defaultSort">
+                                            <input name="ctl01$ContentPlaceHolder1$sortStyle" type="hidden"
+                                                   id="ctl01_ContentPlaceHolder1_sortStyle" value="t1"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <input type="hidden" name="ctl01$ContentPlaceHolder1$hfCompanyUsers"
-                                   id="ctl01_ContentPlaceHolder1_hfCompanyUsers" value="null"/>
-
-                            <a id="ctl01_ContentPlaceHolder1_hrefDelete" href="historyQuestionnaire.html"
-                               class="btn btn-default btn-lg pull-right refuse-btn" style="margin-left:10px;">
-                                <i class="icon refuse-icon"></i>历史问卷
-                            </a>
-
-
-                            <input type="hidden" name="ctl01$ContentPlaceHolder1$hfFolder"
-                                   id="ctl01_ContentPlaceHolder1_hfFolder" value="null"/>
-
-                        </div>
-
-
-                        <!-- 新修改文件夹功能 START -->
-                        <div id="ctl01_ContentPlaceHolder1_surveyfolder" class="survey__folder"></div>
-                        <!-- 新修改文件夹功能 END -->
-
-
-                        <div id="ctl01_ContentPlaceHolder1_qls" class="survey-list">
-                            <div class="panel-group" id="panel-23802">
+                            <div id="ctl01_ContentPlaceHolder1_qls" class="survey-list">
+                                <dl class='survey-items' style='z-index:100;position:relative'>
+                                    <dt class='item-top'>
+                                        <div class='pull-left'>
+                                            <a target='_blank' class='pull-left item-tit'
+                                               title='&quot;九州大地整新容，雷锋遍地开新花&quot;——雷锋知识知多少问卷调查（东北大学软件学院冯佳慧赴辽宁抚顺社会实践）'>&quot;九州大地整新容，雷锋遍地开新花&quot;——雷锋知识知多少问卷调查（东北大学软件学院冯佳慧赴辽宁抚顺社会实践）</a>
+                                        </div>
+                                        <div class='pull-right'>
+                                            <div class='pull-left item-id'>ID:178287214</div>
+                                            <div class='pull-left item-runing'>
+                                                <i class='haspublic'></i>
+                                                已发布
+                                            </div>
+                                            <div class='pull-left item-sheet'>
+                                                答卷:<a class='runing-num-has'>123</a>
+                                            </div>
+                                            <div class='pull-left item-data'>8月15日 14:47</div>
+                                        </div>
+                                    </dt>
+                                    <dd class='item-bot'>
+                                        <div class='process-box pull-left'>
+                                            <dl class='process-1 pull-left'>
+                                                <dd class='spinner-list'>
+                                                    <a>
+                                                        <i class='comIcon design-icon'>&#xe796;</i>
+                                                        设计问卷<i class='index_iconfont'>&#xe656;</i>
+                                                    </a>
+                                                    <ul>
+                                                        <span class='caret-inverted'></span>
+                                                        <li>
+                                                            <a title='设计向导'>设计向导</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='编辑问卷'>编辑问卷</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='问卷设置'>问卷设置</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='问卷外观'>问卷外观</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='流程审批'>流程审批</a>
+                                                        </li>
+                                                        <li>
+                                                            <a>红包&奖品</a>
+                                                        </li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                            <dl class='process-2 pull-left'>
+                                                <dd class='spinner-list'>
+                                                    <a>
+                                                        <i class='comIcon recovery-icon'>&#xe797;</i>
+                                                        发送问卷<i class='index_iconfont'>&#xe656;</i>
+                                                    </a>
+                                                    <ul>
+                                                        <span class='caret-inverted'></span>
+                                                        <li>
+                                                            <a title='通过QQ、MSN、Email发送给受访者'>链接&二维码</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='微信发送'>微信发送</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class='sampleservice'
+                                                               onmouseenter='layer.tips("帮您以最低成本快速收集采集到需要的数据，每月可触达3亿用户",this);'
+                                                               onmouseout='layer.closeAll(this);'>样本服务</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='填写其他用户的问卷，并邀请他们回填'>互填问卷</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='通过设置积分奖励来回收1000份以内的答卷'>申请推荐</a>
+                                                        </li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                            <dl class='process-3 pull-left'>
+                                                <dd class='spinner-list'>
+                                                    <a title='答卷统计分析'>
+                                                        <i class='comIcon download-icon'>&#xe798;</i>
+                                                        分析&下载<i class='index_iconfont'>&#xe656;</i>
+                                                    </a>
+                                                    <ul>
+                                                        <span class='caret-inverted'></span>
+                                                        <li>
+                                                            <a title='查看包含统计分析数据的报告，并可以下载到WORD、PDF '>统计&分析</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='以Excel、CSV格式下载答卷数据（可以导入到SPSS分析'>查看下载答卷</a>
+                                                        </li>
+                                                        <li>
+                                                            <a title='包括来源渠道分析，时间段分析以及地理位置分析'>来源分析</a>
+                                                        </li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class='operation-box pull-right'>
+                                            <a href='javascript:void(0);' class='pull-left stop-items'
+                                               title='此问卷正在运行，点击停止答卷回收'
+                                               onclick='return statusChange(178287214,"状态设为“停止”后将不能填写，是否继续？",2);'>
+                                                <i class='index_iconfont '>&#xe653;</i>
+                                                <span class='vam'>停止</span>
+                                            </a>
+                                            <span class='splitline'></span>
+                                            <a href='javascript:void(0)' onclick='return copyClick(178287214);'
+                                               class='fl control-items'>
+                                                <i class='index_iconfont fs18'>&#xe66d;</i>
+                                                <span class='vam'>复制</span>
+                                            </a>
+                                            <a href='javascript:void(0)' class='fl control-items' title='删除此问卷'
+                                               onclick='deleteClick(178287214);'>
+                                                <i class='index_iconfont fs18'>&#xe66f;</i>
+                                                <span class='vam'>删除</span>
+                                            </a>
+                                            <a href='javascript:void(0)' class='fl control-items'
+                                               onclick='updateVIP(1,null,64)'>
+                                                <i class='index_iconfont fs18'>&#xe670;</i>
+                                                <span class='vam'>文件夹</span>
+                                            </a>
+                                            <a class='fl control-items' href='javascript:void(0);"新增答卷时提醒"; '>
+                                                <i class='index_iconfont fs18'>&#xe66e;</i>
+                                                <span class='vam'>提醒</span>
+                                            </a>
+                                        </div>
+                                    </dd>
+                                </dl>
                             </div>
-
+                            <div class="sort-status spinner-list fs14 fr" style="padding: 10px 0; margin-right: 16px;">
+                                <div id="ctl02_ContentPlaceHolder1_defaultSort">
+                                    <input name="ctl01$ContentPlaceHolder1$sortStyle" type="hidden"
+                                           id="ctl02_ContentPlaceHolder1_sortStyle" value="t1"/>
+                                </div>
+                            </div>
                         </div>
-
-
+                    </div>
+                    <div id="ctl02_ContentPlaceHolder1_qls" class="survey-list" style="padding-top: 35px">
+                        <dl class='survey-items' style='z-index:100;position:relative'>
+                            <dt class='item-top'>
+                                <div class='pull-left'>
+                                    <a target='_blank' class='pull-left item-tit'
+                                       title='&quot手机移动支付业务调查问卷&quot'>&quot;手机移动支付业务调查问卷&quot;</a>
+                                </div>
+                                <div class='pull-right'>
+                                    <div class='pull-left item-id'>ID:178287214</div>
+                                    <div class='pull-left item-runing'>
+                                        <i class='haspublic'></i>
+                                        已结束
+                                    </div>
+                                    <div class='pull-left item-sheet'>
+                                        答卷:<a class='runing-num-has'>38</a>
+                                    </div>
+                                    <div class='pull-left item-data'>10月18日 19:17</div>
+                                </div>
+                            </dt>
+                            <dd class='item-bot'>
+                                <div class='process-box pull-left'>
+                                    <dl class='process-1 pull-left'>
+                                        <dd class='spinner-list'>
+                                            <a>
+                                                <i class='comIcon design-icon'>&#xe796;</i>
+                                                设计问卷<i class='index_iconfont'>&#xe656;</i>
+                                            </a>
+                                            <ul>
+                                                <span class='caret-inverted'></span>
+                                                <li>
+                                                    <a title='设计向导'>设计向导</a>
+                                                </li>
+                                                <li>
+                                                    <a title='编辑问卷'>编辑问卷</a>
+                                                </li>
+                                                <li>
+                                                    <a title='问卷设置'>问卷设置</a>
+                                                </li>
+                                                <li>
+                                                    <a title='问卷外观'>问卷外观</a>
+                                                </li>
+                                                <li>
+                                                    <a title='流程审批'>流程审批</a>
+                                                </li>
+                                                <li>
+                                                    <a>红包&奖品</a>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                    <dl class='process-2 pull-left'>
+                                        <dd class='spinner-list'>
+                                            <a>
+                                                <i class='comIcon recovery-icon'>&#xe797;</i>
+                                                发送问卷<i class='index_iconfont'>&#xe656;</i>
+                                            </a>
+                                            <ul>
+                                                <span class='caret-inverted'></span>
+                                                <li>
+                                                    <a title='通过QQ、MSN、Email发送给受访者'>链接&二维码</a>
+                                                </li>
+                                                <li>
+                                                    <a title='微信发送'>微信发送</a>
+                                                </li>
+                                                <li>
+                                                    <a class='sampleservice'
+                                                       onmouseenter='layer.tips("帮您以最低成本快速收集采集到需要的数据，每月可触达3亿用户",this);'
+                                                       onmouseout='layer.closeAll(this);'>样本服务</a>
+                                                </li>
+                                                <li>
+                                                    <a title='填写其他用户的问卷，并邀请他们回填'>互填问卷</a>
+                                                </li>
+                                                <li>
+                                                    <a title='通过设置积分奖励来回收1000份以内的答卷'>申请推荐</a>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                    <dl class='process-3 pull-left'>
+                                        <dd class='spinner-list'>
+                                            <a title='答卷统计分析'>
+                                                <i class='comIcon download-icon'>&#xe798;</i>
+                                                分析&下载<i class='index_iconfont'>&#xe656;</i>
+                                            </a>
+                                            <ul>
+                                                <span class='caret-inverted'></span>
+                                                <li>
+                                                    <a title='查看包含统计分析数据的报告，并可以下载到WORD、PDF '>统计&分析</a>
+                                                </li>
+                                                <li>
+                                                    <a title='以Excel、CSV格式下载答卷数据（可以导入到SPSS分析'>查看下载答卷</a>
+                                                </li>
+                                                <li>
+                                                    <a title='包括来源渠道分析，时间段分析以及地理位置分析'>来源分析</a>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class='operation-box pull-right'>
+                                    <a href='javascript:void(0);' class='pull-left stop-items' title='此问卷正在运行，点击停止答卷回收'
+                                       onclick='return statusChange(178287214,"状态设为“停止”后将不能填写，是否继续？",2);'>
+                                        <i class='index_iconfont '>&#xe653;</i>
+                                        <span class='vam'>停止</span>
+                                    </a>
+                                    <span class='splitline'></span>
+                                    <a href='javascript:void(0)' onclick='return copyClick(178287214);'
+                                       class='fl control-items'>
+                                        <i class='index_iconfont fs18'>&#xe66d;</i>
+                                        <span class='vam'>复制</span>
+                                    </a>
+                                    <a href='javascript:void(0)' class='fl control-items' title='删除此问卷'
+                                       onclick='deleteClick(178287214);'>
+                                        <i class='index_iconfont fs18'>&#xe66f;</i>
+                                        <span class='vam'>删除</span>
+                                    </a>
+                                    <a href='javascript:void(0)' class='fl control-items'
+                                       onclick='updateVIP(1,null,64)'>
+                                        <i class='index_iconfont fs18'>&#xe670;</i>
+                                        <span class='vam'>文件夹</span>
+                                    </a>
+                                    <a class='fl control-items' href='javascript:void(0)'
+                                       onclick='PDF_launch("/wjx/notify/notify.aspx?activityid=178287214",380,318,null,"新增答卷时提醒"); '>
+                                        <i class='index_iconfont fs18'>&#xe66e;</i>
+                                        <span class='vam'>提醒</span>
+                                    </a>
+                                </div>
+                                <a href='../pages/createQuestionnaire.html' title="创建新问卷" class="wjxui-btn create-btn"
+                                   style="margin-top: 50px;margin-left: 960px">
+                                    <i class="index_iconfont">&#xe667;</i>
+                                    <span>创建问卷</span>
+                                </a>
+                            </dd>
+                        </dl>
                     </div>
                 </div>
             </div>
-
-            <input type="hidden" name="ctl01$ContentPlaceHolder1$hfActivity"
-                   id="ctl01_ContentPlaceHolder1_hfActivity" value="26122768"/>
-            <input type="hidden" name="ctl01$ContentPlaceHolder1$hfStatus" id="ctl01_ContentPlaceHolder1_hfStatus"
-                   value="2"/>
-            <input type="hidden" name="ctl01$ContentPlaceHolder1$hfFolderName"
-                   id="ctl01_ContentPlaceHolder1_hfFolderName"/>
-            <input type="submit" name="ctl01$ContentPlaceHolder1$btnStatusChange" value="发布"
-                   id="ctl01_ContentPlaceHolder1_btnStatusChange" style="display: none;"/>
-            <input type="submit" name="ctl01$ContentPlaceHolder1$btnDelete" value="删除"
-                   id="ctl01_ContentPlaceHolder1_btnDelete" style="display: none;"/>
-            <input type="submit" name="ctl01$ContentPlaceHolder1$btnSetFolder" value="设置文件夹"
-                   id="ctl01_ContentPlaceHolder1_btnSetFolder" style="display: none;"/>
-            <input type="submit" name="ctl01$ContentPlaceHolder1$btnDeleteFolder" value="删除文件夹"
-                   id="ctl01_ContentPlaceHolder1_btnDeleteFolder" style="display: none;"/>
-
-            <div id="ctl01_ContentPlaceHolder1_lmlpage" class="my-container">
-                <div class="page-box page-box-myquestion" style="color: #808080; font-size: 14px">
-                    <div id="ctl01_ContentPlaceHolder1_pagehttml" class="page-list pager-linkpage"></div>
-
-
-                </div>
-            </div>
-
         </div>
-    </div>
-
+    </form>
 </div>
-<div id="ctl01_footlink" class="my-footer MP-footer">
-
-    <div id="ctl01_divWjxFooter">
-        <i class="log-dec">Copyright &copy; 沈阳哲航信息科技有限公司</i><!-- 问卷星底部 -->
-    </div>
 </div>
-
-<script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
-<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/cookie/jquery.cookie.js"></script>
-<script src="../js/jquery.base64.js"></script>
-<script src="../plugins/layer/layer.js"></script>
-<script src="../common/common.js"></script>
-<script src="../plugins/daterangepicker/moment.min.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<script src="answerQuestionJs/myQuestionnaire.js"></script>
 </body>
-</html>
-
