@@ -59,56 +59,19 @@
     </style>
 </head>
 <body class="fp-viewing">
-<div class="main-container">
-    <!--左面菜单栏-->
-    <div class="nav-bar aside size30x30" id="leftlabel">
-        <div class="ui-sidebar">
-            <!--<a href="myQuestionnaires.html" class="return-wrapper">-->
-            <a href="myQuestionnaires.html" class="return-wrapper" onclick="window.opener=null;window.close()">
-                <em class="icon return-icon"></em>
-                <div class="tips">
-                    <div class="caret-top"></div>
-                    返回我的项目
-                </div>
-            </a>
-            <a class="nav-items" href="javascript:void(0)" onclick="designQuestionnaire()">
-                <div class="items-box">
-                    <i class="icon testDesign-icon"></i>
-                </div>
-                <br/>
-                <span class="items-name">设计问卷</span>
-                <em class="caret-left"></em>
-            </a>
-            <a class="nav-items" href="javascript:void(0)">
-                <div class="items-box">
-                    <i class="icon issusPapers-icon"></i>
-                </div>
-                <br/>
-                <span class="items-name">发送问卷</span>
-                <em class="caret-left"></em>
-            </a>
-            <a class="nav-items" href="javascript:void(0)" onclick="countQuestionnaire()">
-                <div class="items-box">
-                    <i class="icon resultsData-icon"></i>
-                </div>
-                <br/>
-                <span class="items-name">分析&下载</span>
-                <em class="caret-left"></em>
-            </a>
-        </div>
-    </div>
-    <div class="inside-wrapper">
-        <div class="inside-head clearfix" style="">
-            <div class="activity-box pull-left">
-            </div>
-            <a href="javascript:void(0)" id="ctl02_hrefView" target="_blank"
-               class="btnnew btn-default btn-lg btn-nobg view-btn" style="margin-left: 40px">预览问卷</a>
-            <div class="nav-show clearfix" id="toplabel">
-                <div class="nav-box clearfix" style="display:none">
 
-                </div>
-                <!--上方分步发送跳转-->
-                <div class="nav-box clearfix" style="display:none">
+<div class="inside-wrapper" style="">
+    <div class="inside-head clearfix" style="width:1100px">
+        <div class="activity-box pull-left">
+        </div>
+        <a href="javascript:void(0)" id="ctl02_hrefView" target="_blank"
+           class="btnnew btn-default btn-lg btn-nobg view-btn" style="margin-left: 40px">预览问卷</a>
+        <div class="nav-show clearfix" id="toplabel">
+            <div class="nav-box clearfix" style="display:none">
+
+            </div>
+            <!--上方分步发送跳转-->
+            <div class="nav-box clearfix" style="display:none">
                     <a id="linkSendA" class="nav-items pull-left" href="javascript:void(0)"
                        onclick="changeTab('linkSend')">
                         <label class=" icon linkCode-icon"></label><br>
@@ -121,36 +84,30 @@
                         <span>问卷发布</span>
                     </a>
 
-                    <a id="" href="javascript:void(0)" style="background-color:#fff" onclick="toAlreadySendQuestInfo()"
-                       class="inside-wrapper nav-show nav-items linkCode-icon">
-                        <label class=" icon linkCode-icon"></label><br>
-                        <span>已发问卷</span>
-                    </a>
+                <button id="returnbtn" onclick="location.href='myQuestionnaires.html'"
+                        style="width:100px;height:26px;margin-left: 555px;margin-top: 10px;font-size: 14px;background-color: #1ea0fa;color: #eeeeee">
+                    返回我的问卷
+                </button>
                 </div>
             </div>
         </div>
 
-        <div class="inside-main">
+    <div class="inside-main" style="width: 1180px">
 
-            <div class="inside-box">
-                <div class="box-items">
+        <div class="inside-box">
+            <div class="box-items">
 
-                    <div style="clear:both"></div>
-                    <div class="step__evaluate article" style="text-align:left">
-                        <style>
-                            .SET-Guide {
-                                width: 740px !important;
-                            }
+                <div style="clear:both"></div>
+                <div class="step__evaluate article" style="text-align:left">
+                    <style>
+                        .SET-Guide {
+                            width: 740px !important;
+                        }
 
                             .SET-Expansion h2 {
                                 font-size: 12px;
                             }
                         </style>
-
-                        <!--<link rel="stylesheet" href="../css/link-code-pop.css"/>-->
-
-
-                        <!--<form name="aspnetForm" method="post" action="sendqstart.aspx?activity=26556304" id="aspnetForm">-->
                         <div>
                             <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
                                    value="/wEPDwUJNDExMDg2OTczDxYCHhNWYWxpZGF0ZVJlcXVlc3RNb2RlAgEWAmYPZBYWAgEPZBYCAgEPFgIeCWlubmVyaHRtbAX8AjxhIGhyZWY9J2phdmFzY3JpcHQ6IHZvaWQoMCk7JyBvbmNsaWNrPSdQREZfbGF1bmNoKCIvd2p4L21hbmFnZS9vbmxpbmVzdXBwb3J0LmFzcHgiLCA2MjAsIDQwMCk7ICcgIGNsYXNzPSdidG4gYnRuLWRlZmF1bHQgYnRuLXNtIGJ0bi1zbS1hcHBseSAnPueUs+ivt+WNj+WKqTwvYT48ZGl2IGNsYXNzPSdmcmVlcHJvbW90ZXR4dCcgc3R5bGU9J21hcmdpbi10b3A6OHB4Oyc+PGI+5o+Q56S677yaPC9iPuWNh+e6p+WIsOS8geS4mueJiOWPr+S6q+WPl+WcqOe6v+WSqOivouWPiueUteivneaUr+aMge+8jDxhIGhyZWY9JyAvcmVnaXN0ZXIvdXBncmFkZXZpcC5hc3B4P3VwZ3JhZGVSZWFzb249MTcnICBjbGFzcz0ndGl0bGVsbmsnPuS6huino+ivpuaDhTwvYT48L3NwYW4+ZAICDxYCHwEFdTxzZWxlY3QgIGlkPSdkZGxBY3Rpdml0eW5ldycgc3R5bGU9Jyc+PG9wdGlvbiB2YWx1ZT0nMjY1NTYzMDQnIHNlbGVjdGVkPSdzZWxlY3RlZCc+VkdCKElEOjI2NTU2MzA0KTwvb3B0aW9uPjwvc2VsZWN0PmQCAw8WAh4EaHJlZgUjaHR0cHM6Ly93d3cud2p4LmNuL2pxLzI2NTU2MzA0LmFzcHhkAgQPFgQfAgUsL3dqeC9wcm9tb3RlL2ludml0ZS5hc3B4P2FjdGl2aXR5aWQ9MjY1NTYzMDQeB1Zpc2libGVoZAIFDxYEHwIFLy93angvcHJvbW90ZS9pbnZpdGVzbXMuYXNweD9hY3Rpdml0eWlkPTI2NTU2MzA0HwNoZAIGDxYCHwNnZAIHDxYCHwIFNC9zYW1wbGUvZGVtYW5kLmFzcHg/YWN0aXZpdHlpZD0yNjU1NjMwNCZsc3Q9MSZucHViPTFkAggPFgQfAgUwL3dqeC9wcm9tb3RlL2pvaW5iYWNrbGlzdC5hc3B4P2FjdGl2aXR5PTI2NTU2MzA0HwNnZAIJDxYEHwIFMC93angvcHJvbW90ZS9wcm9tb3RlYXBwbHkuYXNweD9hY3Rpdml0eT0yNjU1NjMwNB8DZ2QCCg8WAh8CBSNodHRwczovL3d3dy53anguY24vanEvMjY1NTYzMDQuYXNweGQCDA9kFgICAQ9kFgYCAQ8WBh4Dc3JjBWRodHRwczovL2Rvd24ud2p4LmNuL2hhbmRsZXIvcXJjb2RlLmFzaHg/Y2hzPTEyMHgxMjAmY2hsPWh0dHBzJTNhJTJmJTJmd3d3LndqeC5jbiUyZm0lMmYyNjU1NjMwNC5hc3B4HgV3aWR0aAUDMTQwHgZoZWlnaHQFAzE0MGQCBQ8PFgIeBFRleHQFfzxzY3JpcHQgdHlwZT0ndGV4dC9qYXZhc2NyaXB0JyBzcmM9J2h0dHBzOi8vd3d3LndqeC5jbi9oYW5kbGVyL2pxZW1lZC5hc2h4P2FjdGl2aXR5PTI2NTU2MzA0JndpZHRoPTc2MCZzb3VyY2U9aWZyYW1lJz48L3NjcmlwdD5kZAIGDw8WAh8HBZYBPGlmcmFtZSBzcmM9J2h0dHBzOi8vd3d3LndqeC5jbi9qcS8yNjU1NjMwNCxpLHQuYXNweD93aWR0aD03NjAmc291cmNlPWlmcmFtZScgd2lkdGg9Jzc5OScgaGVpZ2h0PSc4MDAnIGZyYW1lYm9yZGVyPScwJyBzdHlsZT0nb3ZlcmZsb3c6YXV0byc+PC9pZnJhbWU+ZGRk13aLVEF/7lJt0vO9Dshg4UvC3jc="/>
@@ -179,17 +136,10 @@
                                             <div class="ui-dialog__section-setting">
                                                 <div class="ui-dialog__items ui-dialog__hidden" id="getDownLoadBtn"
                                                      style="margin-bottom: 20px">
-                                                    <!--<a style="margin-right: 20px;" href="../答题人上传数据模板.xlsx" class="add__batches pull-left">下载模板</a>-->
-                                                    <!--href="javascript:void('0')"-->
-                                                    <!--onclick="addPhone(1);"-->
                                                     <a id="onloadFile" href="#" onclick="addFile()"
                                                        class="add__batches pull-left">批量添加答题人信息</a>
                                                     <input type="file" id="image" name="image"
                                                            style="display:none;"/>
-                                                    <!--<a onclick="return window.confirm(&quot;您确定清空收件人列表吗？&quot;);"-->
-                                                    <!--id="ctl02_ContentPlaceHolder1_btnDelete2" title="清空手机号码列表"-->
-                                                    <!--class="defaultColor underline pull-right"-->
-                                                    <!--href="javascript:__doPostBack('ctl02$ContentPlaceHolder1$btnDelete2','')">清空手机号码列表</a>-->
                                                 </div>
                                                 <div class="fillet-box overall__table ui-dialog__resetMargin">
                                                     <div>
@@ -197,51 +147,8 @@
                                                     </div>
                                                     <ul id="ctl02_ContentPlaceHolder1_divAdd" class="IM-address">
                                                     </ul>
-                                                    <!--<div id="ctl02_ContentPlaceHolder1_lmlpage" class="text-center">-->
-                                                    <!--<div class="page-box page-box-myquestion"-->
-                                                    <!--style="color: #808080; font-size: 14px; height: 30px;">-->
-                                                    <!--<div id="ctl02_ContentPlaceHolder1_pagehttml"-->
-                                                    <!--class="page-list pager-linkpage">-->
-                                                    <!--<a id="ctl02_ContentPlaceHolder1_btnFirst"-->
-                                                    <!--disabled="disabled" class="page-first disabled"-->
-                                                    <!--alt="第一页"></a>-->
-                                                    <!--<a id="ctl02_ContentPlaceHolder1_btnPre"-->
-                                                    <!--disabled="disabled" class="page-up disabled"-->
-                                                    <!--alt="上一页"></a>-->
-
-                                                    <!--第1/1页-->
-
-                                                    <!--<a id="ctl02_ContentPlaceHolder1_btnNext"-->
-                                                    <!--disabled="disabled" class="page-down disabled"-->
-                                                    <!--alt="下一页"></a>-->
-
-                                                    <!--<a id="ctl02_ContentPlaceHolder1_btnLast"-->
-                                                    <!--disabled="disabled" class="page-last disabled"-->
-                                                    <!--alt="最后一页"></a>-->
-
-                                                    <!--</div>-->
-                                                    <!--</div>-->
-                                                    <!--</div>-->
                                                 </div>
                                             </div>
-                                            <!--<script>-->
-                                            <!--var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");-->
-                                            <!--if (openShareWxProgram) {-->
-                                            <!--openShareWxProgram.addEventListener("click", function () {-->
-                                            <!--layer.open({-->
-                                            <!--type: 2,-->
-                                            <!--isOutAnim: false,-->
-                                            <!--title: false,-->
-                                            <!--maxmin: false,-->
-                                            <!--shadeClose: true, //点击遮罩关闭层-->
-                                            <!--area: ['360px', '528px'],-->
-                                            <!--content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']-->
-                                            <!--});-->
-                                            <!--})-->
-                                            <!--}-->
-
-
-                                            <!--</script>-->
                                             <style>
                                                 .beautify-wrap {
                                                     clear: both;
@@ -338,13 +245,7 @@
                                             <div>
                                                  <textarea class="form-control-t" id="msg" onkeyup="wordStatic(this);"
                                                            maxlength="38" placeholder="不能超过44字"
-                                                           style="width: 750px;height:100px;border-radius: 4px;border: 1px solid #abafb2;resize:none;padding:6px 12px;margin-top: 15px"></textarea>
-                                                <!--  <textarea class="form-control-t" id="msg" onkeyup="wordStatic(this);"
-                                                           maxlength="38" placeholder="不能超过44字"
-                                                           onchange="this.value=this.value.substring(0, 38)"  
-                                                           onkeydown="this.value=this.value.substring(0, 38)"
-                                                            onkeyup="this.value=this.value.substring(0, 38)"
-                                                           style="width: 750px;height:100px;border-radius: 4px;border: 1px solid #abafb2;resize:none;padding:6px 12px;margin-top: 15px"></textarea> -->
+                                                           style="width: 750px;height:100px;border-radius: 4px;border: 1px solid #abafb2;resize:none;padding:6px 12px;margin-top: 15px"></textarea>-->
                                                 <p class="text-count" style="font-size:12px;">
                                                     <!--输入<span id="txt">0</span>字&nbsp;-->
                                                     还能输入<span id="Lnum" style="color:red;font-size:12px;"></span>个字,
@@ -371,7 +272,7 @@
                                                                    class="ui-dialog__input--718">
                                                         </div>
                                                         <div class="ui-dialog__items ui-dialog__marginB-10">
-                                                            <label for="" class="clearfix">
+                                                            <label class="clearfix">
                                                                 <strong class="pull-left"
                                                                         style="color: darkgrey">正文：</strong>
                                                                 <span class="must pull-right">注意：请不要修改"
@@ -429,24 +330,6 @@
 
                                                         </div>
                                                     </div>
-                                                    <!--<script>-->
-                                                    <!--var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");-->
-                                                    <!--if (openShareWxProgram) {-->
-                                                    <!--openShareWxProgram.addEventListener("click", function () {-->
-                                                    <!--layer.open({-->
-                                                    <!--type: 2,-->
-                                                    <!--isOutAnim: false,-->
-                                                    <!--title: false,-->
-                                                    <!--maxmin: false,-->
-                                                    <!--shadeClose: true, //点击遮罩关闭层-->
-                                                    <!--area: ['360px', '528px'],-->
-                                                    <!--content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']-->
-                                                    <!--});-->
-                                                    <!--})-->
-                                                    <!--}-->
-
-
-                                                    <!--</script>-->
                                                     <style>
                                                         .beautify-wrap {
                                                             clear: both;
@@ -495,28 +378,6 @@
                                 </div>
                             </div>
                             <div id="ctl02_ContentPlaceHolder1_divBdShare">
-                                <!--<script>-->
-                                <!--//                                                                           window._bd_share_config = {-->
-                                <!--//                                    "common": {-->
-                                <!--//                                    "bdSnsKey": {-->
-                                <!--//                                    "tsina": "585909223",-->
-                                <!--//                                    'tqq': '8395078dc6184d8394090c62482dc2db'-->
-                                <!--//                                    },-->
-                                <!--//                                    "bdUrl": "https://www.wjx.cn/jq/26556304.aspx",-->
-                                <!--//                                    "bdText": "VGB",-->
-                                <!--//                                    'bdDesc': 'Hi，你好，这是我在问卷星上创建的问卷，烦请填写！ ',-->
-                                <!--//                                    'bdComment': '',-->
-                                <!--//                                    "bdMini": "2",-->
-                                <!--//                                    "bdMiniList": false,-->
-                                <!--//                                    "bdPic": "https://image.wjx.cn/images/wlogo.png",-->
-                                <!--//                                    "bdStyle": "0",-->
-                                <!--//                                    "bdSize": "24",-->
-                                <!--//                                    'bdSign': 'off'-->
-                                <!--//                                    }, "share": {}-->
-                                <!--//                                    };-->
-                                <!--//                                    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];-->
-                                <!--</script>-->
-
                             </div>
                         </div>
                         <div id="divlinkcode" style="display:none">
