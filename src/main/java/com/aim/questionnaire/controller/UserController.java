@@ -1,5 +1,6 @@
 package com.aim.questionnaire.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -228,6 +229,60 @@ public class UserController {
 
         return httpResponseEntity;
 
+    }
+
+    /**
+     * 查询用户列表（模糊搜索）
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/queryCost",method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity queryCost(@RequestBody Map<String,Object> map) {
+        System.out.println("sssssssssss");
+        PageHelper.startPage((int)map.get("pageNum"), (int)map.get("pageSize"));
+
+//        System.out.println(map);
+        if(map.get("username").toString()=="")
+            map.put("username",null);
+        List<Map<String, Object>> hasUser = new ArrayList<>();
+        Map<String, Object> map1 = new HashMap<>();
+        map1.put("id",1);
+        map1.put("username","单炟崴");
+        map1.put("useTime","4");
+        map1.put("totalCost","80");
+        hasUser.add(map1);
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("id",2);
+        map2.put("username","冯佳慧");
+        map2.put("useTime","2");
+        map2.put("totalCost","50");
+        hasUser.add(map2);
+        Map<String, Object> map3 = new HashMap<>();
+        map3.put("id",3);
+        map3.put("username","黄子宁");
+        map3.put("useTime","15");
+        map3.put("totalCost","200");
+        hasUser.add(map3);
+
+        PageInfo<Map<String, Object>>pageInfo = new PageInfo(hasUser);
+//        System.out.println(pageInfo);
+        PageListVO pageListVO = new PageListVO();
+        pageListVO.setList(pageInfo.getList());
+        pageListVO.setTotal(pageInfo.getTotal());
+//        for (Map<String, Object> map1 : hasUser) {
+//            System.out.println(map1);
+//        }
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        if(CollectionUtils.isEmpty(hasUser) ) {
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+            httpResponseEntity.setData(null);
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+        }else {
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+            httpResponseEntity.setData(pageListVO);
+            httpResponseEntity.setMessage(Constans.STATUS_MESSAGE);
+        }
+        return httpResponseEntity;
     }
 
 
