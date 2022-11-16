@@ -67,7 +67,7 @@
   <select id="selectUserInfo" parameterType="java.lang.String" resultType="com.aim.questionnaire.dao.entity.UserEntity">
     SELECT id,username,`password`,status
     FROM user_info
-    WHERE username = #{username,jdbcType=VARCHAR} AND status = "1"
+    WHERE username = #{username,jdbcType=VARCHAR}
   </select>
    <!--查询用户列表（模糊搜索）只匹配username的模糊搜索//SELECT * FROM student WHERE name like '%#{name}%'-->
   <select id="queryUserList" parameterType="map" resultType="java.util.Map">
@@ -103,28 +103,6 @@
       <if test="password != null">
         password,
       </if>
-      <if test="roleId != null">
-        role_id,
-      </if>
-      <if test="startTime != null">
-        start_time,
-      </if>
-      <if test="stopTime != null">
-        stop_time,
-      </if>
-        status,
-      <if test="createdBy != null">
-        created_by,
-      </if>
-      <if test="creationDate != null">
-        creation_date,
-      </if>
-      <if test="lastUpdatedBy != null">
-        last_updated_by,
-      </if>
-      <if test="lastUpdateDate != null">
-        last_update_date,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -135,28 +113,6 @@
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="stopTime != null">
-        #{stopTime,jdbcType=TIMESTAMP},
-      </if>
-        1,
-      <if test="createdBy != null">
-        #{createdBy,jdbcType=CHAR},
-      </if>
-      <if test="creationDate != null">
-        #{creationDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastUpdatedBy != null">
-        #{lastUpdatedBy,jdbcType=CHAR},
-      </if>
-      <if test="lastUpdateDate != null">
-        #{lastUpdateDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -196,6 +152,10 @@
 
   </select>
 
+<!--  void deleteUserByUsername(String username);-->
+  <delete id="deleteUserByUsername">
+    delete from user_info where username = #{username}
+  </delete>
   <!--修改用户状态-->
   <update id="modifyUserInfoStatus" parameterType="map">
 

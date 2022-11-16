@@ -87,14 +87,6 @@ function TableInit() {
                     field: 'password',
                     title: '用户密码',
                     align: 'center'
-                }, {
-                    field: 'startTime',
-                    title: '开始时间',
-                    align: 'center'
-                }, {
-                    field: 'endTime',
-                    title: '结束时间',
-                    align: 'center'
                 },
                 {
                     field: 'operation',
@@ -118,15 +110,11 @@ function TableInit() {
                                 'id': '',
                                 "username": '',
                                 'password': '',
-                                "startTime": '',
-                                'endTime': '',
                                 'status': ''
                             };
                             dataNewObj.id = userInfo[i].id;
                             dataNewObj.username = userInfo[i].username;
                             dataNewObj.password = userInfo[i].password;
-                            dataNewObj.startTime = userInfo[i].start_time;
-                            dataNewObj.endTime = userInfo[i].stop_time;
                             dataNewObj.status = userInfo[i].status;
                             NewData.push(dataNewObj);
                         }
@@ -184,12 +172,7 @@ function addFunctionAlty(value, row, index) {
 
     btnText += "<button type=\"button\" id=\"btn_look\" data-toggle=\"modal\" data-target=\"#ChangeUserInfoModal\" onclick=\"editUserPage(" + "'" + row.id + "'" + ")\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
 
-    if (row.status == "1") {
-        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"changeStatus(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">关闭</button>&nbsp;&nbsp;";
-    } else if (row.status == "0") {
-        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"changeStatus(" + "'" + row.id + "'" + ")\" class=\"btn btn-success-g ajax-link\">开启</button>&nbsp;&nbsp;"
-    }
-    btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"deleteUser(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">删除</button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_stop" + row.username + "\" onclick=\"deleteUser(" + "'" + row.username + "'" + ")\" class=\"btn btn-danger-g ajax-link\">删除</button>&nbsp;&nbsp;";
 
     return btnText;
 }
@@ -351,9 +334,23 @@ function changeStatus(index) {
 }
 
 //删除用户
-function deleteUser(id) {
+function deleteUser(username) {
 
-    alert("删除用户")
+    var url = '/admin/deleteUserByUsername';
+    var data = {
+        "username":username
+    };
+    commonAjaxPost(true, url, data, function (result){
+        if (result.code == "666") {
+            layer.msg("删除成功", {icon: 1});
+            setTimeout(function () {
+                window.location.href = 'userManage.html';
+
+            }, 500)
+        }else{
+            layer.msg("删除成功", {icon: 1});
+        }
+    });
 }
 
 

@@ -53,31 +53,9 @@ public class UserService {
      * @return
      */
     public int addUserInfo(Map<String,Object> map) {
-        if(map.get("username") != null) {
-            int userResult = userEntityMapper.queryExistUser(map);
-            if(userResult != 0) {
-                //用户名已经存在
-                return 3;
-            }
-        }
         String id = UUIDUtil.getOneUUID();
         map.put("id",id);
         //创建时间
-        Date date = DateUtil.getCreateTime();
-        map.put("creationDate",date);
-        map.put("lastUpdateDate",date);
-        //创建人
-        String user = "?";//需要更改
-//        String user="admin";
-        map.put("createdBy",user);
-        map.put("lastUpdatedBy",user);
-        //前台传入的时间戳转换
-        String startTimeStr ="2022-11-08T15:34:31";
-        String endTimeStr = "2022-11-08T15:34:31";
-        Date startTime = DateUtil.getMyTime(startTimeStr);
-        Date endTime = DateUtil.getMyTime(endTimeStr);
-        map.put("startTime",startTime);
-        map.put("stopTime",endTime);
         int result = userEntityMapper.addUserInfo(map);
         return result;
     }
@@ -154,5 +132,9 @@ public class UserService {
 
         return userEntity;
 
+    }
+
+    public void deleteUserByUsername(String username) {
+        userEntityMapper.deleteUserByUsername(username);
     }
 }

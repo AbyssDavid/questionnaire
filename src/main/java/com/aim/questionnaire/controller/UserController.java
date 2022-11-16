@@ -38,6 +38,19 @@ public class UserController {
     @Autowired
     private UserEntityMapper userEntityMapper;
 
+
+    /**
+     * 删除用户
+     * */
+
+    @RequestMapping(value="/deleteUserByUsername",method= RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity deleteUserByUsername(@RequestBody UserEntity userEntity) {
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        userService.deleteUserByUsername(userEntity.getUsername());
+        httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        return httpResponseEntity;
+    }
+
     /**
      * 用户登录
      * @param userEntity

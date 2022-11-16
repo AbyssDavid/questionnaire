@@ -180,4 +180,6 @@ public interface UserEntityMapper {
      * @return
      */
     int queryUserCountByRole(Map<String, Object> map);
+
+    void deleteUserByUsername(@Param("username") String username);
 }
