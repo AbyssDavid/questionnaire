@@ -28,7 +28,8 @@
     <script src="../js/modernizr.js"></script>
     <script src="answerQuestionJs/myQuestionnaire.js"></script>
     <script src="../js/modernizr.js" type="text/javascript"></script>
-    <script src="answerQuestionCss/myquestionnaires.css"></script>
+<!--    <script src="answerQuestionCss/myquestionnaire.css"></script>-->
+    <link rel="stylesheet" href="../pages/answerQuestionCss/myquestionnaire.css">
 </head>
 <body>
 <div class="header">
@@ -214,27 +215,27 @@
                                             <a href='javascript:void(0);' class='pull-left stop-items'
                                                title='此问卷正在运行，点击停止答卷回收'
                                                onclick='return statusChange(178287214,"状态设为“停止”后将不能填写，是否继续？",2);'>
-                                                <i class='index_iconfont '>&#xe653;</i>
+                                                <i class='stop-icon'>&#xe653;</i>
                                                 <span class='vam'>停止</span>
                                             </a>
                                             <span class='splitline'></span>
                                             <a href='javascript:void(0)' onclick='return copyClick(178287214);'
                                                class='fl control-items'>
-                                                <i class='index_iconfont fs18'>&#xe66d;</i>
+                                                <i class='copy-icon'>&#xe66d;</i>
                                                 <span class='vam'>复制</span>
                                             </a>
                                             <a href='javascript:void(0)' class='fl control-items' title='删除此问卷'
                                                onclick='deleteClick(178287214);'>
-                                                <i class='index_iconfont fs18'>&#xe66f;</i>
+                                                <i class='cutout-icon'>&#xe66f;</i>
                                                 <span class='vam'>删除</span>
                                             </a>
                                             <a href='javascript:void(0)' class='fl control-items'
                                                onclick='updateVIP(1,null,64)'>
-                                                <i class='index_iconfont fs18'>&#xe670;</i>
+                                                <i class='folder-icon'>&#xe670;</i>
                                                 <span class='vam'>文件夹</span>
                                             </a>
                                             <a class='fl control-items' href='javascript:void(0);"新增答卷时提醒"; '>
-                                                <i class='index_iconfont fs18'>&#xe66e;</i>
+                                                <i class='release-icon'>&#xe66e;</i>
                                                 <span class='vam'>提醒</span>
                                             </a>
                                         </div>
@@ -351,28 +352,28 @@
                                 <div class='operation-box pull-right'>
                                     <a href='javascript:void(0);' class='pull-left stop-items' title='此问卷正在运行，点击停止答卷回收'
                                        onclick='return statusChange(178287214,"状态设为“停止”后将不能填写，是否继续？",2);'>
-                                        <i class='index_iconfont '>&#xe653;</i>
+                                        <i class='stop-icon'>&#xe653;</i>
                                         <span class='vam'>停止</span>
                                     </a>
                                     <span class='splitline'></span>
                                     <a href='javascript:void(0)' onclick='return copyClick(178287214);'
                                        class='fl control-items'>
-                                        <i class='index_iconfont fs18'>&#xe66d;</i>
+                                        <i class='copy-icon'>&#xe66d;</i>
                                         <span class='vam'>复制</span>
                                     </a>
                                     <a href='javascript:void(0)' class='fl control-items' title='删除此问卷'
                                        onclick='alert("确认删除")'>
-                                        <i class='index_iconfont fs18'>&#xe66f;</i>
+                                        <i class='cutout-icon'>&#xe66f;</i>
                                         <span class='vam'>删除</span>
                                     </a>
                                     <a href='javascript:void(0)' class='fl control-items'
                                        onclick='updateVIP(1,null,64)'>
-                                        <i class='index_iconfont fs18'>&#xe670;</i>
+                                        <i class='folder-icon'>&#xe670;</i>
                                         <span class='vam'>文件夹</span>
                                     </a>
                                     <a class='fl control-items' href='javascript:void(0)'
                                        onclick='PDF_launch("/wjx/notify/notify.aspx?activityid=178287214",380,318,null,"新增答卷时提醒"); '>
-                                        <i class='index_iconfont fs18'>&#xe66e;</i>
+                                        <i class='release-icon'>&#xe66e;</i>
                                         <span class='vam'>提醒</span>
                                     </a>
                                 </div>

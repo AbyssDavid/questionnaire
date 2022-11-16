@@ -26,13 +26,13 @@
     height: 18px;
     margin-right: 10px;
     margin-top: 11px;
-    background: url("../images/prompt.png") no-repeat center;
+    background: url("../../images/prompt.png") no-repeat center;
 }
 .prompt-wrapper .warning-icon {
     margin-top: 0px;
 }
 .main-wrapper .survey-wrapper .survey-list .warning-wrapper .warning-icon {
-    background: url("../images/important_orange.png") no-repeat center;
+    background: url("../../images/important_orange.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper {
     position: relative;
@@ -78,10 +78,10 @@
     margin: 0;
     border: none;
     cursor: pointer;
-    background: url("../images/search-gray.png") no-repeat center;
+    background: url("../../images/search-gray.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-create .create-search .search-icon:hover {
-    background: url("../images/search1.png") no-repeat center;
+    background: url("../../images/search1.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-create .create-btn {
     font-size: 16px;
@@ -102,7 +102,8 @@
     height: 15px;
     margin-right: 6px;
     margin-top: -2px;
-    background: url("../images/create_15.png") no-repeat center;
+
+    background: url("../../images/create_15.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-create .refuse-btn {
     width: 100px;
@@ -133,14 +134,14 @@
     background-color: #30a6f5;
 }
 .main-wrapper .survey-wrapper .survey-create .refuse-btn:hover .refuse-icon {
-    background: url("../images/delete2.png") no-repeat center;
+    background: url("../../images/delete2.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-create .refuse-icon {
     width: 18px;
     height: 18px;
     margin-right: 10px;
     margin-top: -2px;
-    background: url("../images/delete-gray.png") no-repeat center;
+    background: url("../../images/delete-gray.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-create .drop-down {
     margin-left: 10px;
@@ -164,10 +165,10 @@
     margin-top: -2px;
 }
 .main-wrapper .survey-wrapper .survey-create .folder-icon {
-    background: url("../images/folder-hover.png") no-repeat center;
+    background: url("../../images/folder-hover.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-create .folderChild-icon {
-    background: url("../images/user_18.png") no-repeat center;
+    background: url("../../images/user_18.png") no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list {
 
@@ -269,14 +270,14 @@
     cursor: pointer;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot  .item-remind:hover .remind-icon {
-    background: url(../images/remind-hover.png) no-repeat center;
+    background: url(../../images/remind-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .item-remind .remind-icon {
     width: 18px;
     height: 18px;
     margin-top: -3px;
     margin-right: 10px;
-    background: url(../images/remind.png) no-repeat center;
+    background: url(../../images/remind.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-top .item-data {
     margin-right: 6px;
@@ -323,37 +324,37 @@
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .design-icon {
     width: 24px;
     height: 24px;
-    background: url(../images/design.png) no-repeat center;
+    background: url(../../images/design.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .relation-icon {
     width: 24px;
     height: 24px;
-    background: url(../images/relationship_24.png) no-repeat center;
+    background: url(../../images/relationship_24.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .recovery-icon {
     width: 24px;
     height: 24px;
-    background: url(../images/recovery.png) no-repeat center;
+    background: url(../../images/recovery.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .download-icon {
     width: 24px;
     height: 24px;
-    background: url(../images/download.png) no-repeat center;
+    background: url(../../images/download.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .process-1:hover .relation-icon {
-    background: url(../images/relationship1_24.png) no-repeat center;
+    background: url(../../images/relationship1_24.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .process-1:hover .design-icon {
-    background: url(../images/design-hover.png) no-repeat center;
+    background: url(../../images/design-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .process-2:hover .design-icon {
-    background: url(../images/design-hover.png) no-repeat center;
+    background: url(../../images/design-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .process-2:hover .recovery-icon {
-    background: url(../images/recovery-hover.png) no-repeat center;
+    background: url(../../images/recovery-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .process-box .process-3:hover .download-icon {
-    background: url(../images/download-hover.png) no-repeat center;
+    background: url(../../images/download-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box {
 
@@ -372,30 +373,30 @@
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .stop-icon {
     width: 18px;
     height: 18px;
-    background: url(../images/stop.png) no-repeat center;
+    background: url(../../images/stop.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .release-icon {
     width: 18px;
     height: 18px;
-    background: url(../images/release-hover.png) no-repeat center;
+    background: url(../../images/release-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .copy-icon {
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    background: url(../images/copy.png) no-repeat center;
+    background: url(../../images/copy.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .cutout-icon {
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    background: url(../images/delete.png) no-repeat center;
+    background: url(../../images/delete.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .folder-icon {
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    background: url(../images/folder.png) no-repeat center;
+    background: url(../../images/folder.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box > *:hover {
     color: #30a6f5;
@@ -408,13 +409,13 @@
     color: #ff6161;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .copy-items:hover .copy-icon {
-    background: url(../images/copy-hover.png) no-repeat center;
+    background: url(../../images/copy-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .cutout-items:hover .cutout-icon {
-    background: url(../images/delete-hover.png) no-repeat center;
+    background: url(../../images/delete-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .item-bot .operation-box .folder-items:hover .folder-icon {
-    background: url(../images/folder-hover.png) no-repeat center;
+    background: url(../../images/folder-hover.png) no-repeat center;
 }
 .main-wrapper .survey-wrapper .survey-list .warning-wrapper {
     padding: 0 20px;
@@ -843,7 +844,7 @@
     height: 21px;
     margin-right: 10px;
     margin-top: -2px;
-    background: url("../images/create_21.png") no-repeat center;
+    background: url("../../images/create_21.png") no-repeat center;
 }
 @media (min-width: 1366px) {
     .main-wrapper .survey-wrapper .create-guide {
@@ -922,13 +923,13 @@
     text-decoration:underline;
 }
 .article-plus .article-help  li a i.a-icona{
-    background: url("../images/tick1_12.png") center top no-repeat;
+    background: url("../../images/tick1_12.png") center top no-repeat;
     width:14px;
     height:14px;
     padding-right:6px;
 }
 .article-plus .article-help li a:hover i.a-icona {
-    background: url("../images/tick11_12.png") center top no-repeat;
+    background: url("../../images/tick11_12.png") center top no-repeat;
     width: 14px;
     height: 14px;
     padding-right: 6px;
@@ -1001,18 +1002,18 @@
     width: 14px;
     height: 14px;
     margin-right: 0;
-    background: url(../images/problem_light.png) no-repeat center;
+    background: url(../../images/problem_light.png) no-repeat center;
     margin:-2px 0px  0px 6px;
 
 }
 .tableResult .help-icon:hover {
-    background: url(../images/problem_dark.png) no-repeat center;
+    background: url(../../images/problem_dark.png) no-repeat center;
 }
 .tableResult .qiyu-icon {
     width: 16px;
     height: 14px;
     margin-right: 0;
-    background: url(../images/consult_blue.png) no-repeat center;
+    background: url(../../images/consult_blue.png) no-repeat center;
     margin:0px 6px  0px 0px;
 
 }
@@ -1020,7 +1021,7 @@
     width: 16px;
     height: 16px;
     margin-right: 0;
-    background: url(../images/QQ_blue.png) no-repeat center;
+    background: url(../../images/QQ_blue.png) no-repeat center;
     margin:0px 6px  0px 0px;
 
 }
@@ -1028,7 +1029,7 @@
     width: 16px;
     height: 16px;
     margin-right: 0;
-    background: url(../images/phone_blue.png) no-repeat center;
+    background: url(../../images/phone_blue.png) no-repeat center;
     margin:0px 6px  0px 0px;
 
 }
@@ -1095,7 +1096,7 @@
     width: 14px;
     height: 14px;
     border: none;
-    background: url("../images/del.png") no-repeat center;
+    background: url("../../images/del.png") no-repeat center;
 }
 .survey__folder-body .folderThing:hover .deleteFolder {
     display: block;
@@ -1117,14 +1118,14 @@
     width: 13px;
     height: 8px;
     margin-right: 2px;
-    background: url("../images/pack-up.png") no-repeat center;
+    background: url("../../images/pack-up.png") no-repeat center;
 }
 .survey__folder-body.status {
     overflow: hidden;
     height: 40px;
 }
 .survey__folder-body.status + .survey__folder-switch .icon-arrow {
-    background-image: url("../images/unfurled.png");
+    background-image: url("../../images/unfurled.png");
 }
 /* 文件夹展开收起功能 END */
 
