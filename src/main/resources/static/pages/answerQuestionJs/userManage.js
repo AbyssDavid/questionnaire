@@ -89,6 +89,16 @@ function TableInit() {
                     align: 'center'
                 },
                 {
+                    field: 'groups',
+                    title: '所属群组',
+                    align: 'center'
+                },
+                {
+                    field: 'space',
+                    title: '空间大小',
+                    align: 'center'
+                },
+                {
                     field: 'operation',
                     title: '操作',
                     align: 'center',
@@ -110,11 +120,15 @@ function TableInit() {
                                 'id': '',
                                 "username": '',
                                 'password': '',
+                                'groups':'',
+                                'space':'',
                                 'status': ''
                             };
                             dataNewObj.id = userInfo[i].id;
                             dataNewObj.username = userInfo[i].username;
                             dataNewObj.password = userInfo[i].password;
+                            dataNewObj.groups = userInfo[i].groups;
+                            dataNewObj.space = userInfo[i].space;
                             dataNewObj.status = userInfo[i].status;
                             NewData.push(dataNewObj);
                         }

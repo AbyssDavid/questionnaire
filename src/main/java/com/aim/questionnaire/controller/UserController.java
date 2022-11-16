@@ -94,6 +94,12 @@ public class UserController {
         if(map.get("username").toString()=="")
                  map.put("username",null);
         List<Map<String, Object>> hasUser = userEntityMapper.queryUserList(map);
+        for (Map<String, Object> m: hasUser
+             ) {
+            int l = m.get("username").toString().length();
+            m.put("groups",l);
+            m.put("space",l*3-2);
+        }
         PageInfo<Map<String, Object>>pageInfo = new PageInfo(hasUser);
 //        System.out.println(pageInfo);
         PageListVO pageListVO = new PageListVO();
