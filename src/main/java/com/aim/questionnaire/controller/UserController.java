@@ -239,32 +239,38 @@ public class UserController {
     @RequestMapping(value = "/queryCost",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity queryCost(@RequestBody Map<String,Object> map) {
         System.out.println("sssssssssss");
-        PageHelper.startPage((int)map.get("pageNum"), (int)map.get("pageSize"));
+        PageHelper.startPage((int) map.get("pageNum"), (int) map.get("pageSize"));
 
 //        System.out.println(map);
-        if(map.get("username").toString()=="")
-            map.put("username",null);
+        if (map.get("username").toString() == "")
+            map.put("username", null);
         List<Map<String, Object>> hasUser = new ArrayList<>();
         Map<String, Object> map1 = new HashMap<>();
-        map1.put("id",1);
-        map1.put("username","单炟崴");
-        map1.put("useTime","4");
-        map1.put("totalCost","80");
+        map1.put("id", 1);
+        map1.put("username", "单炟崴");
+        map1.put("useTime", "无效问卷");
+        map1.put("totalCost", "80");
         hasUser.add(map1);
         Map<String, Object> map2 = new HashMap<>();
-        map2.put("id",2);
-        map2.put("username","冯佳慧");
-        map2.put("useTime","2");
-        map2.put("totalCost","50");
+        map2.put("id", 2);
+        map2.put("username", "冯佳慧");
+        map2.put("useTime", "已作答");
+        map2.put("totalCost", "50");
         hasUser.add(map2);
         Map<String, Object> map3 = new HashMap<>();
-        map3.put("id",3);
-        map3.put("username","黄子宁");
-        map3.put("useTime","15");
-        map3.put("totalCost","200");
+        map3.put("id", 3);
+        map3.put("username", "黄子宁");
+        map3.put("useTime", "未作答");
+        map3.put("totalCost", "200");
         hasUser.add(map3);
+//        Map<String, Object> map4 = new HashMap<>();
+//        map4.put("id",4);
+//        map4.put("username","虞书欣");
+//        map4.put("useTime","未作答");
+//        map4.put("totalCost","30");
+//        hasUser.add(map4);
 
-        PageInfo<Map<String, Object>>pageInfo = new PageInfo(hasUser);
+        PageInfo<Map<String, Object>> pageInfo = new PageInfo(hasUser);
 //        System.out.println(pageInfo);
         PageListVO pageListVO = new PageListVO();
         pageListVO.setList(pageInfo.getList());

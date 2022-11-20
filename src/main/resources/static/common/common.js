@@ -32,7 +32,7 @@ function header() {
         '                    <dt class="icon user-icon"><em></em></dt>\n' +
         '                    <dd class="spinner-list">\n' +
         '                        <a href="javascript:void(0)" class="user-name">' +
-        '                           <span id="ctl01_lblUserName"style="text-align:center">admin</span>' +
+        '                           <span id="ctl01_lblUserName"style="text-align:center">Admin</span>' +
         '                        </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="user-name" href="userManage.html" id="gotoUserManage">租户管理</a>\n' +
         '                    </dd>\n' +
         '                </dl>\n' +

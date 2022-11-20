@@ -159,9 +159,7 @@ function addFunctionAlty(value, row, index) {
 
     btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"resetPassword(" + "'" + row.id + "'" + ")\" style='width: 77px;' class=\"btn btn-default-g ajax-link\">答题情况</button>&nbsp;&nbsp;";
 
-    btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"editUserPage(" + "'" + row.id + "')\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
-
-    btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"deleteUser(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">删除</button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"deleteUser(" + "'" + row.id + "'" + ")\" style='width: 120px' class=\"btn btn-danger-g ajax-link\">设为无效答卷</button>&nbsp;&nbsp;";
 
     return btnText;
 }
@@ -193,6 +191,6 @@ function changeStatus(index) {
 //删除用户
 function deleteUser(id) {
 
-    alert("删除答者")
+    alert("确定为无效问卷？")
 }
 

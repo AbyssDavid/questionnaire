@@ -194,16 +194,17 @@
                     <div id="ctl01_ContentPlaceHolder1_searchPapaer" class="survey-create clearfix">
 
                         <div class="create-add pull-left">
-                            <a href="javascript:void(0)" title="添加答者" id="createUser" target="_self"
+                            <a href="javascript:void(0)" title="手动添加答者" id="createUser" target="_self"
                                class="btn btn-default btn-lg pull-left create-btn"
-                               onclick="location.href='CreateNewTenant.html'">
-                                <i class="icon create-icon"></i>添加答者</a>
+                               style="width: 140px;margin-left: 22px"
+                               onclick="location.href='createNewRespondent.html'">
+                                <i class="icon create-icon"></i>手动添加答者</a>
                             <div id="ctl01_ContentPlaceHolder1_divInfo" class="create-search pull-left"
                                  style="margin-right:10px;">
                                 <input name="ctl01$ContentPlaceHolder1$txtName" type="text" placeholder="请输入答者信息进行搜索..."
                                        id="keyWord" class="serarchbox"
                                        onfocus="if(placeholder=='请输入答者信息进行搜索...'){placeholder='';}"
-                                       onblur="if(placeholder==''){placeholder='请输入打折信息进行搜索...';}">
+                                       onblur="if(placeholder==''){placeholder='请输入答者信息进行搜索...';}">
                                 <div class="icon search-icon buttonboder" id="userManager"
                                      onclick="getUserList()"></div>
                             </div>

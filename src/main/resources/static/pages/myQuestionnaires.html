@@ -13,9 +13,8 @@
 
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.css">
-
-    <link rel="stylesheet" href="../css/wjxmaster.css">
     <link rel="stylesheet" href="../pages/answerQuestionCss/myquestionnaire.css">
+    <link rel="stylesheet" href="../css/wjxmaster.css">
     <link href="../css/wjxUI.css" rel="stylesheet"/>
 
     <script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
@@ -28,8 +27,7 @@
     <script src="../js/modernizr.js"></script>
     <script src="answerQuestionJs/myQuestionnaire.js"></script>
     <script src="../js/modernizr.js" type="text/javascript"></script>
-<!--    <script src="answerQuestionCss/myquestionnaire.css"></script>-->
-    <link rel="stylesheet" href="../pages/answerQuestionCss/myquestionnaire.css">
+    <script src="../js/selectpick.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="header">
@@ -37,7 +35,6 @@
 
 <div class="BS-box" style="text-align:left;">
 
-    <script src="../js/selectpick.js" type="text/javascript"></script>
     <form name="aspnetForm" method="post" id="aspnetForm">
         <div>
             <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="011AC131"/>
@@ -94,7 +91,8 @@
                                                onkeypress="return searchQ(event);"/>
                                         <input type="submit" name="ctl01$ContentPlaceHolder1$btnSub" value=""
                                                id="ctl01_ContentPlaceHolder1_btnSub" style="display: none"/>
-                                        <i class="search-icon index_iconfont" onclick="btnSub.click()">&#xe668;</i>
+
+                                        <button>查找</button>
                                     </div>
                                     <div class="spinner-list fs14 fr" style="padding: 10px 0; margin-right: 16px;">
 
@@ -137,7 +135,7 @@
                                                 <dd class='spinner-list'>
                                                     <a>
                                                         <i class='comIcon design-icon'>&#xe796;</i>
-                                                        设计问卷<i class='index_iconfont'>&#xe656;</i>
+                                                        设计问卷
                                                     </a>
                                                     <ul>
                                                         <span class='caret-inverted'></span>
@@ -166,7 +164,7 @@
                                                 <dd class='spinner-list'>
                                                     <a>
                                                         <i class='comIcon recovery-icon'>&#xe797;</i>
-                                                        发送问卷<i class='index_iconfont'>&#xe656;</i>
+                                                        发送问卷
                                                     </a>
                                                     <ul>
                                                         <span class='caret-inverted'></span>
@@ -194,7 +192,7 @@
                                                 <dd class='spinner-list'>
                                                     <a title='答卷统计分析'>
                                                         <i class='comIcon download-icon'>&#xe798;</i>
-                                                        分析&下载<i class='index_iconfont'>&#xe656;</i>
+                                                        分析&下载
                                                     </a>
                                                     <ul>
                                                         <span class='caret-inverted'></span>
@@ -275,7 +273,7 @@
                                         <dd class='spinner-list'>
                                             <a>
                                                 <i class='comIcon design-icon'>&#xe796;</i>
-                                                设计问卷<i class='index_iconfont'>&#xe656;</i>
+                                                设计问卷
                                             </a>
                                             <ul>
                                                 <span class='caret-inverted'></span>
@@ -304,7 +302,7 @@
                                         <dd class='spinner-list'>
                                             <a>
                                                 <i class='comIcon recovery-icon'>&#xe797;</i>
-                                                发送问卷<i class='index_iconfont'>&#xe656;</i>
+                                                发送问卷
                                             </a>
                                             <ul>
                                                 <span class='caret-inverted'></span>
@@ -315,9 +313,7 @@
                                                     <a title='微信发送'>微信发送</a>
                                                 </li>
                                                 <li>
-                                                    <a class='sampleservice'
-                                                       onmouseenter='layer.tips("帮您以最低成本快速收集采集到需要的数据，每月可触达3亿用户",this);'
-                                                       onmouseout='layer.closeAll(this);'>样本服务</a>
+                                                    <a class='sampleservice'>样本服务</a>
                                                 </li>
                                                 <li>
                                                     <a title='填写其他用户的问卷，并邀请他们回填'>互填问卷</a>
@@ -332,7 +328,7 @@
                                         <dd class='spinner-list'>
                                             <a title='答卷统计分析'>
                                                 <i class='comIcon download-icon'>&#xe798;</i>
-                                                分析&下载<i class='index_iconfont'>&#xe656;</i>
+                                                分析&下载
                                             </a>
                                             <ul>
                                                 <span class='caret-inverted'></span>
@@ -379,7 +375,6 @@
                                 </div>
                                 <a href='../pages/createQuestionnaire.html' title="创建新问卷" class="wjxui-btn create-btn"
                                    style="margin-top: 50px;margin-left: 960px">
-                                    <i class="index_iconfont">&#xe667;</i>
                                     <span>创建问卷</span>
                                 </a>
                             </dd>
